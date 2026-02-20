@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ressources Gratuites — SalesCraft | Scripts, Guides, Outils de Prospection</title>
+<meta name="description" content="Téléchargez gratuitement nos scripts d'appel, guides de prospection et outils terrain pour commerciaux B2B SaaS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Newsreader:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FDFBF7; --bg-warm: #F7F3ED; --bg-navy: #0F1B2D;
+  --bg-card: #FFFFFF; --bg-muted: #F0EDE6;
+  --navy: #0F1B2D; --navy-light: #1E3050;
+  --coral: #E05A3A; --coral-light: #F0735A;
+  --coral-bg: rgba(224,90,58,0.06); --coral-border: rgba(224,90,58,0.15);
+  --teal: #0D9488; --teal-bg: rgba(13,148,136,0.06);
+  --gold: #D97706; --gold-bg: rgba(217,119,6,0.06);
+  --text: #1A1A1A; --text-secondary: #4A5568; --text-muted: #8896A6; --text-inverse: #FDFBF7;
+  --border: #E8E2D9; --border-strong: #D4CDC2;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(15,27,45,0.04);
+  --shadow-md: 0 4px 16px rgba(15,27,45,0.06);
+  --shadow-lg: 0 12px 40px rgba(15,27,45,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--navy); }
+.serif { font-family: 'Newsreader', serif; font-style: italic; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.section-label {
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--coral); margin-bottom: 0.8rem;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0.8rem 0; background: rgba(253,251,247,0.95);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--border);
+}
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+.logo {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-weight: 800; font-size: 1.15rem; color: var(--navy); text-decoration: none;
+}
+.logo-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--navy); color: var(--text-inverse);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.8rem;
+}
+.logo span { color: var(--coral); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link { font-size: 0.88rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+.nav-link:hover { color: var(--navy); }
+.nav-cta {
+  padding: 0.55rem 1.3rem; background: var(--coral); color: #FFF;
+  font-weight: 600; font-size: 0.85rem; border-radius: 8px;
+  text-decoration: none; transition: all 0.25s;
+}
+.nav-cta:hover { background: var(--coral-light); }
+
+/* HERO */
+.res-hero {
+  padding: 8rem 0 4rem; text-align: center;
+  background: var(--bg-warm);
+}
+.res-hero h1 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem); letter-spacing: -1px;
+  margin-bottom: 0.8rem;
+}
+.res-hero p { font-size: 1.05rem; color: var(--text-secondary); max-width: 550px; margin: 0 auto; }
+
+/* CATEGORY FILTERS */
+.filters {
+  display: flex; justify-content: center; gap: 0.5rem;
+  padding: 2rem 0; flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 0.5rem 1.2rem; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 50px;
+  font-family: inherit; font-size: 0.82rem; font-weight: 600;
+  color: var(--text-secondary); cursor: pointer;
+  transition: all 0.3s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--navy); color: #FFF; border-color: var(--navy);
+}
+
+/* RESOURCES GRID */
+.res-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; padding: 0 0 4rem;
+}
+
+.res-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: all 0.3s;
+}
+.res-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+
+.res-card-image {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--bg-muted), var(--bg-warm));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; border-bottom: 1px solid var(--border);
+}
+
+.res-card-body { padding: 1.5rem; }
+
+.res-card-tag {
+  display: inline-block; padding: 0.2rem 0.6rem;
+  background: var(--coral-bg); border: 1px solid var(--coral-border);
+  border-radius: 4px; font-size: 0.65rem; font-weight: 700;
+  color: var(--coral); text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+
+.res-card-body h3 { font-size: 1.05rem; margin-bottom: 0.4rem; letter-spacing: -0.2px; }
+.res-card-body p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.2rem; }
+
+/* EMAIL GATE FORM */
+.email-gate {
+  display: flex; gap: 0.5rem;
+}
+.email-gate input {
+  flex: 1; padding: 0.6rem 1rem;
+  border: 1.5px solid var(--border-strong); border-radius: 8px;
+  font-family: inherit; font-size: 0.85rem;
+  background: var(--bg); transition: border-color 0.3s;
+}
+.email-gate input:focus { outline: none; border-color: var(--coral); }
+.email-gate input::placeholder { color: var(--text-muted); }
+
+.email-gate button {
+  padding: 0.6rem 1.2rem; background: var(--coral); color: #FFF;
+  font-family: inherit; font-weight: 700; font-size: 0.82rem;
+  border: none; border-radius: 8px; cursor: pointer;
+  transition: all 0.3s; white-space: nowrap;
+}
+.email-gate button:hover { background: var(--coral-light); }
+
+/* BLOG SECTION */
+.blog-section { padding: 4rem 0; background: var(--bg-warm); }
+.blog-header { text-align: center; margin-bottom: 2.5rem; }
+.blog-header h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -0.5px; margin-bottom: 0.3rem; }
+.blog-header p { color: var(--text-secondary); font-size: 0.95rem; }
+
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+
+.blog-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  text-decoration: none; transition: all 0.3s;
+}
+.blog-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.blog-card-date { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.blog-card h3 { font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--navy); }
+.blog-card p { font-size: 0.82rem; color: var(--text-muted); }
+.blog-card-link { display: inline-block; margin-top: 0.8rem; font-size: 0.82rem; color: var(--coral); font-weight: 600; }
+
+/* NEWSLETTER */
+.newsletter {
+  padding: 5rem 0; text-align: center;
+}
+.newsletter-card {
+  max-width: 580px; margin: 0 auto; background: var(--bg-navy);
+  border-radius: var(--radius-lg); padding: 3rem;
+  color: var(--text-inverse);
+}
+.newsletter-card h2 { font-size: 1.5rem; color: var(--text-inverse); margin-bottom: 0.5rem; }
+.newsletter-card p { color: rgba(253,251,247,0.6); font-size: 0.92rem; margin-bottom: 1.5rem; }
+.newsletter-form { display: flex; gap: 0.5rem; max-width: 400px; margin: 0 auto; }
+.newsletter-form input {
+  flex: 1; padding: 0.7rem 1rem; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; background: rgba(255,255,255,0.08); color: #FFF;
+  font-family: inherit; font-size: 0.88rem;
+}
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+.newsletter-form input:focus { outline: none; border-color: var(--coral); }
+.newsletter-form button {
+  padding: 0.7rem 1.5rem; background: var(--coral); color: #FFF;
+  font-family: inherit; font-weight: 700; font-size: 0.88rem;
+  border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s;
+}
+.newsletter-form button:hover { background: var(--coral-light); }
+.newsletter-note { font-size: 0.72rem; color: rgba(253,251,247,0.35); margin-top: 0.8rem; }
+
+/* FOOTER */
+footer {
+  padding: 2.5rem 0; border-top: 1px solid var(--border);
+}
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-left { font-size: 0.78rem; color: var(--text-muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; }
+.footer-links a:hover { color: var(--coral); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .res-grid, .blog-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .email-gate { flex-direction: column; }
+  .newsletter-form { flex-direction: column; }
+}
+
+/* Reveal animations */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="salescraft-commando-v4.html" class="logo">
+      <div class="logo-icon">SC</div>
+      Sales<span>Craft</span>
+    </a>
+    <div class="nav-links">
+      <a href="salescraft-commando-v4.html#methode" class="nav-link">Méthode</a>
+      <a href="salescraft-commando-v4.html#programme" class="nav-link">Programme</a>
+      <a href="salescraft-commando-v4.html#resultats" class="nav-link">Résultats</a>
+      <a href="#" class="nav-link" style="color:var(--navy);font-weight:700;">Ressources</a>
+      <a href="salescraft-commando-v4.html#booking" class="nav-cta">Réserver un diagnostic →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="res-hero">
+  <div class="container">
+    <div class="section-label">Ressources gratuites</div>
+    <h1>Outils terrain pour commerciaux<br><span class="serif">qui veulent des résultats.</span></h1>
+    <p>Scripts, guides, checklists — tout ce dont votre équipe a besoin pour prospecter mieux, dès maintenant. Sans blabla.</p>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="container">
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">Tout</button>
+    <button class="filter-btn" data-filter="script">Scripts</button>
+    <button class="filter-btn" data-filter="guide">Guides</button>
+    <button class="filter-btn" data-filter="checklist">Checklists</button>
+    <button class="filter-btn" data-filter="template">Templates</button>
+  </div>
+</div>
+
+<!-- RESOURCES GRID -->
+<section class="container">
+  <div class="res-grid">
+    <!-- Resource 1 -->
+    <div class="res-card reveal" data-category="script">
+      <div class="res-card-image">📋</div>
+      <div class="res-card-body">
+        <div class="res-card-tag">Script</div>
+        <h3>Le Script Commando</h3>
+        <p>Le script d'appel en 4 blocs qui marche pour 80% des SaaS B2B. Ouverture, diagnostic, pivot, close — + les 5 objections les plus fréquentes.</p>
+        <div class="email-gate">
+          <input type="email" placeholder="votre@email.com">
+          <button>Télécharger</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resource 2 -->
+    <div class="res-card reveal" data-category="checklist">
+      <div class="res-card-image">🔍</div>
+      <div class="res-card-body">
+        <div class="res-card-tag">Checklist</div>
+        <h3>Audit Prospection — 10 questions</h3>
+        <p>Évaluez votre cadence de prospection actuelle en 5 minutes. Identifiez où vous perdez du pipeline et quoi corriger en priorité.</p>
+        <div class="email-gate">
+          <input type="email" placeholder="votre@email.com">
+          <button>Télécharger</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resource 3 -->
+    <div class="res-card reveal" data-category="guide">
+      <div class="res-card-image">🎯</div>
+      <div class="res-card-body">
+        <div class="res-card-tag">Guide</div>
+        <h3>Grille Traitement d'Objections</h3>
+        <p>Les 10 objections les plus fréquentes en cold call B2B avec les réponses terrain testées sur 500+ appels.</p>
+        <div class="email-gate">
+          <input type="email" placeholder="votre@email.com">
+          <button>Télécharger</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Placeholder 4 -->
+    <div class="res-card reveal" data-category="template">
+      <div class="res-card-image">📊</div>
+      <div class="res-card-body">
+        <div class="res-card-tag">Template</div>
+        <h3>Template de Cadence de Prospection</h3>
+        <p>Placeholder — Ali ajoutera le vrai contenu. Structure type pour organiser vos sessions de phoning hebdomadaires.</p>
+        <div class="email-gate">
+          <input type="email" placeholder="votre@email.com">
+          <button>Télécharger</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Placeholder 5 -->
+    <div class="res-card reveal" data-category="guide">
+      <div class="res-card-image">📖</div>
+      <div class="res-card-body">
+        <div class="res-card-tag">Guide</div>
+        <h3>Guide : Structurer un Ninja Contest</h3>
+        <p>Placeholder — Comment organiser une compétition de phoning qui crée de l'émulation sans pression toxique.</p>
+        <div class="email-gate">
+          <input type="email" placeholder="votre@email.com">
+          <button>Télécharger</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Placeholder 6 -->
+    <div class="res-card reveal" data-category="script">
+      <div class="res-card-image">💬</div>
+      <div class="res-card-body">
+        <div class="res-card-tag">Script</div>
+        <h3>Script de Relance Email B2B</h3>
+        <p>Placeholder — 5 templates de relance email qui augmentent le taux de réponse de 3 à 15%.</p>
+        <div class="email-gate">
+          <input type="email" placeholder="votre@email.com">
+          <button>Télécharger</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / ARTICLES -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-header reveal">
+      <h2>Articles & Insights</h2>
+      <p>Réflexions terrain sur la prospection B2B, le coaching commercial et la vente complexe.</p>
+    </div>
+    <div class="blog-grid">
+      <a href="#" class="blog-card reveal">
+        <div class="blog-card-date">Bientôt</div>
+        <h3>Pourquoi vos commerciaux ne décrochent pas le téléphone (et comment y remédier)</h3>
+        <p>Ce n'est pas un problème de motivation. C'est un problème de cadre.</p>
+        <span class="blog-card-link">Lire l'article →</span>
+      </a>
+      <a href="#" class="blog-card reveal">
+        <div class="blog-card-date">Bientôt</div>
+        <h3>Le pipeline fantôme : comment auditer votre CRM en 15 minutes</h3>
+        <p>80% des pipelines affichent un chiffre qui ne sera jamais closé. Voici comment le voir.</p>
+        <span class="blog-card-link">Lire l'article →</span>
+      </a>
+      <a href="#" class="blog-card reveal">
+        <div class="blog-card-date">Bientôt</div>
+        <h3>La Méthode SalesCraft™ : Cadre, Cadence, Coaching, Culture</h3>
+        <p>Notre framework en 4 piliers pour transformer une équipe qui évite le téléphone en machine à pipeline.</p>
+        <span class="blog-card-link">Lire l'article →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-card reveal">
+      <h2>La newsletter SalesCraft</h2>
+      <p>Un email par semaine. Un insight terrain actionnable. Zéro blabla.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="votre@email.com">
+        <button>S'inscrire</button>
+      </div>
+      <div class="newsletter-note">Pas de spam. Désinscription en 1 clic.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 SalesCraft · Coaching commercial B2B · Paris</div>
+      <div class="footer-links">
+        <a href="salescraft-commando-v4.html">Sprint Commando</a>
+        <a href="#">LinkedIn</a>
+        <a href="mailto:ali@salescraft.fr">ali@salescraft.fr</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Category filters
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.res-card').forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Email gate placeholder interaction
+document.querySelectorAll('.email-gate button').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const input = btn.parentElement.querySelector('input');
+    if (input.value && input.value.includes('@')) {
+      btn.textContent = '✓ Envoyé !';
+      btn.style.background = '#0D9488';
+      setTimeout(() => { btn.textContent = 'Télécharger'; btn.style.background = ''; }, 2000);
+    } else {
+      input.style.borderColor = '#E05A3A';
+      setTimeout(() => { input.style.borderColor = ''; }, 1500);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
