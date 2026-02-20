@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprint Commando — SalesCraft | 3 jours pour relancer votre prospection</title>
+<meta name="description" content="En 3 jours, vos commerciaux décrochent le téléphone et remplissent votre pipeline. Coaching terrain, Ninja Contest, résultats mesurables dès J2.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Newsreader:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   DESIGN SYSTEM — LIGHT BRAND
+   Warm cream base · Deep navy authority · Burnt coral energy
+   ═══════════════════════════════════════ */
+:root {
+  /* Backgrounds */
+  --bg: #FDFBF7;
+  --bg-warm: #F7F3ED;
+  --bg-navy: #0F1B2D;
+  --bg-navy-light: #162338;
+  --bg-card: #FFFFFF;
+  --bg-muted: #F0EDE6;
+
+  /* Brand colors */
+  --navy: #0F1B2D;
+  --navy-light: #1E3050;
+  --coral: #E05A3A;
+  --coral-light: #F0735A;
+  --coral-bg: rgba(224,90,58,0.06);
+  --coral-border: rgba(224,90,58,0.15);
+  --teal: #0D9488;
+  --teal-bg: rgba(13,148,136,0.06);
+  --gold: #D97706;
+  --gold-bg: rgba(217,119,6,0.06);
+
+  /* Text */
+  --text: #1A1A1A;
+  --text-secondary: #4A5568;
+  --text-muted: #8896A6;
+  --text-inverse: #FDFBF7;
+
+  /* Borders */
+  --border: #E8E2D9;
+  --border-strong: #D4CDC2;
+
+  /* Misc */
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(15,27,45,0.04);
+  --shadow-md: 0 4px 16px rgba(15,27,45,0.06);
+  --shadow-lg: 0 12px 40px rgba(15,27,45,0.08);
+  --shadow-card: 0 1px 3px rgba(15,27,45,0.04), 0 0 0 1px rgba(15,27,45,0.03);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.serif { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+.section-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 0.8rem;
+}
+
+/* ═══════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0.8rem 0;
+  background: rgba(253,251,247,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.5px;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.logo span { color: var(--coral); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--navy); }
+
+.nav-cta {
+  padding: 0.55rem 1.3rem;
+  background: var(--navy);
+  color: var(--text-inverse);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-cta:hover { background: var(--navy-light); transform: translateY(-1px); }
+
+/* ═══════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════ */
+.hero {
+  padding: 9rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle warm gradient orb */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(224,90,58,0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  background: var(--coral-bg);
+  border: 1px solid var(--coral-border);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--coral);
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.hero-eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--coral);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4.2vw, 3.3rem);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.3rem;
+  animation: fadeInUp 0.7s ease-out 0.1s both;
+}
+
+.hero h1 .serif { color: var(--coral); }
+
+.hero-desc {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.7s ease-out 0.2s both;
+}
+
+.hero-actions {
+  display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;
+  animation: fadeInUp 0.7s ease-out 0.3s both;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  background: var(--coral);
+  color: #FFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700; font-size: 0.92rem;
+  border-radius: 10px; text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 2px 8px rgba(224,90,58,0.2);
+}
+
+.btn-primary:hover {
+  background: var(--coral-light); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(224,90,58,0.25);
+}
+
+.btn-ghost {
+  padding: 0.9rem 1.5rem;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600; font-size: 0.92rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px; text-decoration: none;
+  transition: all 0.25s;
+}
+
+.btn-ghost:hover { border-color: var(--navy); color: var(--navy); }
+
+.hero-trust {
+  display: flex; align-items: center; gap: 0.6rem;
+  margin-top: 1.5rem;
+  animation: fadeInUp 0.7s ease-out 0.4s both;
+}
+
+.hero-trust-text { font-size: 0.78rem; color: var(--text-muted); }
+.hero-trust-logos { display: flex; gap: 0.3rem; }
+.hero-trust-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); }
+
+/* Hero image / placeholder */
+.hero-visual {
+  position: relative;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.hero-image-box {
+  width: 100%; aspect-ratio: 4/3.2;
+  border-radius: var(--radius-lg);
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0.8rem;
+  overflow: hidden; position: relative;
+}
+
+.hero-image-box .ph-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--bg-muted); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+
+.hero-image-box .ph-text {
+  font-size: 0.8rem; color: var(--text-muted); text-align: center; padding: 0 1rem;
+}
+
+/* Floating stat badges */
+.float-badge {
+  position: absolute;
+  padding: 0.65rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+}
+
+.float-badge.top-right { top: -14px; right: -14px; }
+.float-badge.bottom-left { bottom: -14px; left: -14px; }
+
+.float-num {
+  font-size: 1.5rem; font-weight: 800; color: var(--coral); line-height: 1;
+}
+
+.float-label { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.3px; }
+
+/* ═══════════════════════════════════════
+   PROOF BAR
+   ═══════════════════════════════════════ */
+.proof-bar {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-warm);
+  overflow: hidden;
+}
+
+.proof-bar .proof-header {
+  text-align: center; margin-bottom: 1.2rem;
+}
+
+.proof-label {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--text-muted); white-space: nowrap; font-weight: 600;
+}
+
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.proof-logo {
+  font-weight: 700; font-size: 1rem; color: var(--navy);
+  opacity: 0.35; transition: opacity 0.3s; letter-spacing: -0.3px;
+  white-space: nowrap; flex-shrink: 0;
+  padding: 0.5rem 1rem;
+}
+
+.proof-logo:hover { opacity: 0.7; }
+
+/* Future: replace text with images */
+.proof-logo img {
+  height: 28px; width: auto; filter: grayscale(100%); opacity: 0.5;
+  transition: filter 0.3s, opacity 0.3s;
+}
+.proof-logo img:hover { filter: grayscale(0%); opacity: 1; }
+
+/* ═══════════════════════════════════════
+   PROBLEM
+   ═══════════════════════════════════════ */
+.problem { padding: 6rem 0; }
+
+.problem-header { max-width: 650px; margin-bottom: 3rem; }
+
+.problem-header h2 {
+  font-size: clamp(1.7rem, 2.8vw, 2.3rem); line-height: 1.25; letter-spacing: -0.8px;
+  margin-bottom: 0.8rem;
+}
+
+.problem-header p { font-size: 1rem; color: var(--text-secondary); }
+
+.problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+.problem-card {
+  padding: 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s;
+  position: relative;
+}
+
+.problem-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.problem-num {
+  font-size: 0.68rem; font-weight: 700; color: var(--coral);
+  letter-spacing: 1px; margin-bottom: 0.6rem;
+}
+
+.problem-card h3 { font-size: 1rem; margin-bottom: 0.4rem; letter-spacing: -0.2px; }
+
+.problem-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; }
+
+/* ═══════════════════════════════════════
+   COST OF INACTION
+   ═══════════════════════════════════════ */
+.cost-section { padding: 0 0 6rem; }
+
+.cost-card {
+  background: var(--bg-navy);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+  color: var(--text-inverse);
+}
+
+.cost-num { font-size: 2.6rem; font-weight: 800; color: var(--coral-light); line-height: 1; margin-bottom: 0.5rem; }
+.cost-label { font-size: 0.86rem; color: rgba(253,251,247,0.65); line-height: 1.4; }
+.cost-item { text-align: center; }
+
+/* ═══════════════════════════════════════
+   ABOUT / COACH
+   ═══════════════════════════════════════ */
+.about { padding: 6rem 0; background: var(--bg-warm); }
+
+.about-grid {
+  display: grid; grid-template-columns: 300px 1fr; gap: 3.5rem; align-items: start;
+}
+
+.about-photo {
+  width: 100%; aspect-ratio: 3/3.5;
+  border-radius: var(--radius-lg);
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0.5rem;
+}
+
+.about-photo .ph-icon { font-size: 2rem; }
+.about-photo .ph-text { font-size: 0.78rem; color: var(--text-muted); }
+
+.about-content h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2rem); letter-spacing: -0.5px; margin-bottom: 1rem;
+}
+
+.about-content p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; }
+
+.about-credentials {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem;
+}
+
+.credential {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);
+}
+
+.credential .icon { font-size: 0.9rem; }
+
+/* ═══════════════════════════════════════
+   OFFER / PRICING
+   ═══════════════════════════════════════ */
+.offer { padding: 6rem 0; }
+
+.offer-header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+
+.offer-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.8px; margin-bottom: 0.8rem;
+}
+
+.offer-header p { font-size: 1rem; color: var(--text-secondary); }
+
+.pricing-card {
+  max-width: 600px; margin: 0 auto 3rem;
+  background: var(--bg-card);
+  border: 2px solid var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.pricing-badge {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  padding: 0.3rem 1.2rem;
+  background: var(--navy); color: var(--text-inverse);
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; border-radius: 50px; white-space: nowrap;
+}
+
+.pricing-top { text-align: center; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+
+.pricing-name { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.3rem; }
+
+.pricing-tagline { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.2rem; }
+
+.pricing-amount { font-size: 3.5rem; font-weight: 800; color: var(--navy); line-height: 1; }
+.pricing-unit { font-size: 0.9rem; color: var(--text-muted); }
+.pricing-compare { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem; }
+
+.pricing-includes {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; margin-bottom: 2rem;
+}
+
+.pricing-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.86rem; color: var(--text-secondary);
+}
+
+.pricing-item .check { color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+.pricing-cta {
+  display: block; width: 100%; padding: 1rem;
+  background: var(--coral); color: #FFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700; font-size: 1rem;
+  border: none; border-radius: 10px; cursor: pointer;
+  text-decoration: none; text-align: center;
+  transition: all 0.25s;
+  box-shadow: 0 2px 8px rgba(224,90,58,0.2);
+}
+
+.pricing-cta:hover {
+  background: var(--coral-light); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(224,90,58,0.25);
+}
+
+.pricing-note { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: 0.8rem; }
+
+/* ═══════════════════════════════════════
+   PROGRAMME — 3 DAYS
+   ═══════════════════════════════════════ */
+.programme { padding: 6rem 0; background: var(--bg-warm); }
+
+.programme-header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+
+.programme-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.8px; margin-bottom: 0.5rem;
+}
+
+.programme-header p { color: var(--text-secondary); font-size: 1rem; }
+
+.days { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.day-card {
+  display: grid; grid-template-columns: 180px 1fr;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.day-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.day-sidebar {
+  padding: 2rem;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  background: var(--bg-warm);
+}
+
+.day-num { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
+.day-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-top: 0.2rem; }
+.day-subtitle { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-top: 0.6rem; }
+
+.day-content { padding: 2rem 2.5rem; }
+
+.day-content h3 { font-size: 1.15rem; letter-spacing: -0.3px; margin-bottom: 0.4rem; }
+.day-content .day-desc { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.2rem; }
+
+.day-items { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; }
+
+.day-item {
+  display: flex; align-items: flex-start; gap: 0.45rem;
+  font-size: 0.84rem; color: var(--text-secondary);
+}
+
+.day-item .bullet { color: var(--coral); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+/* Ninja Contest day */
+.day-card.ninja { border-color: var(--gold); border-width: 2px; }
+.day-card.ninja .day-sidebar { background: var(--gold-bg); }
+.day-card.ninja .day-num { color: var(--gold); }
+
+.ninja-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  background: var(--gold-bg); border: 1px solid rgba(217,119,6,0.15);
+  border-radius: 50px;
+  font-size: 0.72rem; font-weight: 700; color: var(--gold); letter-spacing: 0.3px;
+  margin-bottom: 0.8rem;
+}
+
+/* ═══════════════════════════════════════
+   NINJA CONTEST DETAIL
+   ═══════════════════════════════════════ */
+.ninja-section { padding: 6rem 0; }
+
+.ninja-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+.ninja-content h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 1rem; }
+.ninja-content h2 .gold { color: var(--gold); }
+.ninja-content > p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+.ninja-features { display: flex; flex-direction: column; gap: 1rem; }
+
+.ninja-feature { display: flex; gap: 0.8rem; align-items: flex-start; }
+
+.ninja-icon {
+  width: 38px; height: 38px; flex-shrink: 0; border-radius: 10px;
+  background: var(--gold-bg); border: 1px solid rgba(217,119,6,0.12);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+
+.ninja-feature h4 { font-size: 0.92rem; margin-bottom: 0.15rem; }
+.ninja-feature p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0; }
+
+/* Scoreboard */
+.scoreboard {
+  background: var(--bg-navy); border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-lg); color: var(--text-inverse);
+}
+
+.scoreboard-header {
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.scoreboard-title { font-weight: 700; font-size: 0.88rem; }
+
+.scoreboard-live {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.72rem; color: #34D399; font-weight: 600;
+}
+
+.scoreboard-live .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #34D399;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+.scoreboard-body { padding: 1rem 1.5rem; }
+
+.score-team {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.score-team:last-of-type { border-bottom: none; }
+
+.team-info { display: flex; align-items: center; gap: 0.6rem; }
+.team-color { width: 10px; height: 10px; border-radius: 50%; }
+.team-color.red { background: #EF4444; }
+.team-color.blue { background: #3B82F6; }
+.team-name { font-weight: 600; font-size: 0.88rem; }
+.team-score { font-weight: 800; font-size: 1.3rem; color: var(--gold); }
+
+.score-detail { display: flex; gap: 0.8rem; padding-top: 0.8rem; }
+
+.score-metric {
+  text-align: center; flex: 1;
+  padding: 0.6rem; background: rgba(255,255,255,0.04); border-radius: 8px;
+}
+
+.score-metric-num { font-weight: 800; font-size: 1.1rem; }
+.score-metric-label { font-size: 0.62rem; color: rgba(253,251,247,0.45); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ═══════════════════════════════════════
+   TESTIMONIALS
+   ═══════════════════════════════════════ */
+.testimonials { padding: 6rem 0; background: var(--bg-warm); }
+
+.testimonials-header { text-align: center; max-width: 550px; margin: 0 auto 3rem; }
+.testimonials-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 0.3rem; }
+
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+.testi-card {
+  padding: 1.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.testi-stars { color: var(--gold); font-size: 0.82rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
+
+.testi-quote {
+  font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.testi-metric {
+  display: inline-block; padding: 0.25rem 0.7rem;
+  background: var(--teal-bg); border: 1px solid rgba(13,148,136,0.12);
+  border-radius: 6px;
+  font-size: 0.75rem; font-weight: 700; color: var(--teal);
+  margin-bottom: 1rem;
+}
+
+.testi-author { display: flex; align-items: center; gap: 0.7rem; }
+
+.testi-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--bg-muted); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.75rem; color: var(--text-muted);
+}
+
+.testi-name { font-weight: 700; font-size: 0.82rem; color: var(--navy); }
+.testi-role { font-size: 0.72rem; color: var(--text-muted); }
+
+/* ═══════════════════════════════════════
+   FOR WHO
+   ═══════════════════════════════════════ */
+.for-who { padding: 6rem 0; }
+
+.for-who-header { text-align: center; max-width: 550px; margin: 0 auto 3rem; }
+.for-who-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 0.3rem; }
+
+.for-who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; max-width: 900px; margin: 0 auto; }
+
+.for-who-card {
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.for-who-card h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+.for-who-card .role { font-size: 0.78rem; color: var(--coral); font-weight: 600; margin-bottom: 1rem; }
+
+.for-who-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+
+.for-who-list li {
+  font-size: 0.86rem; color: var(--text-secondary);
+  display: flex; align-items: flex-start; gap: 0.45rem;
+}
+
+.for-who-list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════
+   RESOURCES CTA
+   ═══════════════════════════════════════ */
+.resources { padding: 6rem 0; background: var(--bg-warm); }
+
+.resources-header { text-align: center; max-width: 550px; margin: 0 auto 2.5rem; }
+.resources-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 0.5rem; }
+.resources-header p { color: var(--text-secondary); font-size: 0.95rem; }
+
+.resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+.resource-card {
+  padding: 1.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.resource-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.resource-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--coral-bg); border: 1px solid var(--coral-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 1rem;
+}
+
+.resource-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--navy); }
+.resource-card p { font-size: 0.82rem; color: var(--text-muted); }
+
+.resource-tag {
+  display: inline-block; margin-top: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-muted);
+  border-radius: 4px;
+  font-size: 0.68rem; font-weight: 600; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+/* ═══════════════════════════════════════
+   FAQ
+   ═══════════════════════════════════════ */
+.faq { padding: 6rem 0; }
+
+.faq-header { text-align: center; max-width: 550px; margin: 0 auto 2.5rem; }
+.faq-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; }
+
+.faq-list { max-width: 720px; margin: 0 auto; }
+
+.faq-item { border-bottom: 1px solid var(--border); cursor: pointer; }
+
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 0;
+  font-weight: 600; font-size: 0.95rem; color: var(--navy);
+}
+
+.faq-toggle {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--coral); font-size: 1rem; flex-shrink: 0;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.faq-item.open .faq-toggle { transform: rotate(45deg); background: var(--coral-bg); }
+
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;
+}
+
+.faq-item.open .faq-a { max-height: 500px; padding-bottom: 1.2rem; }
+
+/* ═══════════════════════════════════════
+   FINAL CTA
+   ═══════════════════════════════════════ */
+.final-cta {
+  padding: 6rem 0;
+  background: var(--bg-navy);
+  text-align: center;
+  color: var(--text-inverse);
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 80%, rgba(224,90,58,0.08), transparent 60%);
+}
+
+.final-cta .container { position: relative; z-index: 1; }
+
+.final-cta h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -0.8px;
+  margin-bottom: 0.8rem; color: var(--text-inverse);
+}
+
+.final-cta p {
+  color: rgba(253,251,247,0.6); font-size: 1.05rem;
+  max-width: 520px; margin: 0 auto 2rem;
+}
+
+.final-guarantee {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(13,148,136,0.1); border: 1px solid rgba(13,148,136,0.2);
+  border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600; color: #34D399;
+  margin-bottom: 1.5rem;
+}
+
+.final-sub {
+  font-size: 0.82rem; color: rgba(253,251,247,0.4); margin-top: 1.5rem;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+footer {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+
+.footer-left { font-size: 0.78rem; color: var(--text-muted); }
+
+.footer-links { display: flex; gap: 1.5rem; }
+
+.footer-links a {
+  font-size: 0.78rem; color: var(--text-muted);
+  text-decoration: none; transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--coral); }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-visual { max-width: 480px; margin: 0 auto; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .cost-card { grid-template-columns: 1fr; gap: 1.5rem; }
+  .day-card { grid-template-columns: 1fr; }
+  .day-sidebar {
+    flex-direction: row; gap: 1rem;
+    border-right: none; border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+  }
+  .day-items { grid-template-columns: 1fr; }
+  .ninja-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .for-who-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 250px; margin: 0 auto; }
+  .pricing-includes { grid-template-columns: 1fr; }
+  .resources-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 6rem 0 3rem; }
+  .hero h1 { font-size: 1.9rem; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .marquee-track { gap: 2rem; animation-duration: 18s; }
+  .proof-logo { font-size: 0.85rem; padding: 0.3rem 0.6rem; }
+  .problem, .offer, .programme, .ninja-section, .testimonials, .faq, .for-who, .about, .resources { padding: 3.5rem 0; }
+  .cost-card { padding: 2rem; }
+  .pricing-card { padding: 1.5rem; }
+  .day-content { padding: 1.5rem; }
+  .float-badge { display: none; }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="logo">Sales<span>Craft</span></a>
+    <div class="nav-links">
+      <a href="#programme" class="nav-link">Programme</a>
+      <a href="#resultats" class="nav-link">Résultats</a>
+      <a href="#ressources" class="nav-link">Ressources</a>
+      <a href="#about" class="nav-link">À propos</a>
+      <a href="#booking" class="nav-cta">Réserver un diagnostic →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="dot"></span> Coaching terrain · 3 jours · Résultats immédiats</div>
+        <h1>Vos commerciaux<br>ne décrochent pas<br>le téléphone.<br><span class="serif">On change ça.</span></h1>
+        <p class="hero-desc">Le Sprint Commando, c'est 3 jours dans vos locaux pour remettre votre équipe en mouvement. Audit, coaching live, compétition entre équipes. Ils repartent avec des RDVs dans l'agenda — et l'envie de recommencer.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn-primary">Réserver un diagnostic gratuit →</a>
+          <a href="#programme" class="btn-ghost">Voir le programme</a>
+        </div>
+        <div class="hero-trust">
+          <span class="hero-trust-text">Déjà adopté par des équipes chez</span>
+          <span style="font-weight:600;font-size:0.78rem;color:var(--text-muted);">Mendo · Cenef-IT · Bloomays</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-box">
+          <div class="ph-icon">📞</div>
+          <p class="ph-text">Photo : Ali en coaching live<br>avec une équipe commerciale</p>
+        </div>
+        <div class="float-badge top-right">
+          <div class="float-num">65</div>
+          <div class="float-label">Conversations en 1 jour</div>
+        </div>
+        <div class="float-badge bottom-left">
+          <div class="float-num">12</div>
+          <div class="float-label">RDVs qualifiés posés</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<section class="proof-bar">
+  <div class="proof-header">
+    <span class="proof-label">Ils nous font confiance</span>
+  </div>
+  <div class="marquee-wrapper">
+    <div class="marquee-track" id="marqueeTrack">
+      <span class="proof-logo">Mendo</span>
+      <span class="proof-logo">Cenef-IT</span>
+      <span class="proof-logo">Bloomays</span>
+      <span class="proof-logo">Leakmited</span>
+      <span class="proof-logo">Ayoba Tech</span>
+      <span class="proof-logo">Epir Digital</span>
+      <span class="proof-logo">SaaS Corp</span>
+      <span class="proof-logo">TechVente</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-header reveal">
+      <div class="section-label">Le problème</div>
+      <h2>Vous avez investi dans les outils.<br>Pas dans la <span class="serif">cadence.</span></h2>
+      <p>Votre équipe a un CRM, des séquences email, de l'IA. Mais le téléphone reste muet. Et chaque semaine sans prospection active, c'est du pipeline qui ne se remplit pas.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-num">01</div>
+        <h3>Le pipeline ment</h3>
+        <p>60% du parcours d'achat se fait sans vos commerciaux. Les deals "en cours" stagnent. Le CRM affiche 500K€ de pipeline, vous closez 10%.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">02</div>
+        <h3>Vos SDR coûtent cher pour rien</h3>
+        <p>Coût réel d'un SDR : 2,3× son salaire brut. Turnover : 34%. Chaque départ = 23 000€ perdus + 3 mois de chaos. Et entre-temps, moins de 2h/semaine au téléphone.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">03</div>
+        <h3>Les formations n'ont rien changé</h3>
+        <p>2 jours en salle, des slides, des jeux de rôle. Retour au bureau lundi : rien n'a changé. 90% des formations commerciales = zéro impact à J+30.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">04</div>
+        <h3>Personne ne coach sur le terrain</h3>
+        <p>Votre Head of Sales passe 30% de son temps à manager, pas à coacher. Personne ne s'assoit à côté de chaque commercial pour corriger le pitch en temps réel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COST OF INACTION -->
+<section class="cost-section" style="padding:0 0 5rem;">
+  <div class="container">
+    <div class="cost-card reveal">
+      <div class="cost-item">
+        <div class="cost-num">23 000€</div>
+        <div class="cost-label">Coût moyen d'un départ de SDR<br>(recrutement + formation + pipeline perdu)</div>
+      </div>
+      <div class="cost-item">
+        <div class="cost-num">< 2h</div>
+        <div class="cost-label">Temps moyen passé au téléphone<br>par semaine par commercial B2B</div>
+      </div>
+      <div class="cost-item">
+        <div class="cost-num">90%</div>
+        <div class="cost-label">Des formations commerciales<br>sans impact mesurable à J+30</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / COACH -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-photo">
+        <div class="ph-icon">👤</div>
+        <p class="ph-text">Photo portrait d'Ali</p>
+      </div>
+      <div class="about-content">
+        <div class="section-label">Votre coach</div>
+        <h2>Ali Rahman</h2>
+        <p>15 ans d'expérience terrain en vente B2B. Ex-Head of Sales en startup SaaS. J'ai recruté, formé et dirigé des équipes commerciales de 4 à 20 personnes.</p>
+        <p>Je ne fais pas de théorie. Je m'assois à côté de vos commerciaux et je les coach pendant qu'ils appellent. Les résultats arrivent le jour même — pas dans 6 mois.</p>
+        <p>Ma conviction : le problème n'est jamais le manque d'outils. C'est le manque de cadence, de cadre et de coaching terrain.</p>
+        <div class="about-credentials">
+          <div class="credential"><span class="icon">🏢</span> Ex-Head of Sales SaaS</div>
+          <div class="credential"><span class="icon">📞</span> 15+ ans terrain B2B</div>
+          <div class="credential"><span class="icon">👥</span> 50+ commerciaux coachés</div>
+          <div class="credential"><span class="icon">🤝</span> Partenaire Lemlist</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER / PRICING -->
+<section class="offer" id="offre">
+  <div class="container">
+    <div class="offer-header reveal">
+      <div class="section-label">L'offre</div>
+      <h2>Le Sprint Commando.<br><span class="serif">3 jours pour tout changer.</span></h2>
+      <p>Pas de formation en salle. Je m'installe dans vos locaux et je coach votre équipe en live pendant qu'ils prospectent. Les résultats arrivent le jour même.</p>
+    </div>
+
+    <div class="pricing-card reveal">
+      <div class="pricing-badge">Offre phare</div>
+      <div class="pricing-top">
+        <div class="pricing-name">Sprint Commando</div>
+        <div class="pricing-tagline">3 jours · Sur site · Coaching terrain intégral</div>
+        <div class="pricing-amount">3 500€</div>
+        <div class="pricing-unit">HT · Tout inclus</div>
+        <div class="pricing-compare">≈ 1 166€/jour — moins qu'une semaine de salaire d'un SDR improductif</div>
+      </div>
+      <div class="pricing-includes">
+        <div class="pricing-item"><span class="check">✓</span> Audit complet des scripts d'appel</div>
+        <div class="pricing-item"><span class="check">✓</span> Qualification de la liste cible</div>
+        <div class="pricing-item"><span class="check">✓</span> Formation traitement d'objections</div>
+        <div class="pricing-item"><span class="check">✓</span> Coaching live pendant le phoning</div>
+        <div class="pricing-item"><span class="check">✓</span> Ninja Contest (compétition d'équipes)</div>
+        <div class="pricing-item"><span class="check">✓</span> Débriefing + plan d'action 30 jours</div>
+        <div class="pricing-item"><span class="check">✓</span> Compte-rendu détaillé remis au CEO</div>
+        <div class="pricing-item"><span class="check">✓</span> Call de suivi à J+15 (30 min)</div>
+      </div>
+      <a href="#booking" class="pricing-cta">Réserver mon Sprint Commando →</a>
+      <div class="pricing-note">50% à la réservation, 50% après J3 · Éligible OPCO</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section class="programme" id="programme">
+  <div class="container">
+    <div class="programme-header reveal">
+      <div class="section-label">Le programme</div>
+      <h2>3 jours. Minute par minute.</h2>
+      <p>Chaque heure est pensée pour maximiser les résultats. Rien n'est laissé au hasard.</p>
+    </div>
+    <div class="days">
+      <div class="day-card reveal">
+        <div class="day-sidebar">
+          <div><div class="day-num">J1</div><div class="day-label">Jour 1</div></div>
+          <div class="day-subtitle">Préparation<br>& Calibrage</div>
+        </div>
+        <div class="day-content">
+          <h3>Poser les fondations. Affûter les armes.</h3>
+          <p class="day-desc">Avant d'envoyer votre équipe au front, on s'assure que chaque élément est prêt.</p>
+          <div class="day-items">
+            <div class="day-item"><span class="bullet">→</span> 9h-10h30 — Audit des scripts d'appel et identification des failles</div>
+            <div class="day-item"><span class="bullet">→</span> 10h30-12h — Réécriture des scripts avec l'équipe</div>
+            <div class="day-item"><span class="bullet">→</span> 13h30-15h — Qualification et priorisation de la liste (ICP check)</div>
+            <div class="day-item"><span class="bullet">→</span> 15h-16h30 — Formation : traitement des 5 objections top</div>
+            <div class="day-item"><span class="bullet">→</span> 16h30-17h30 — Simulations en binômes (jeux de rôle terrain)</div>
+            <div class="day-item"><span class="bullet">→</span> 17h30-18h — Briefing Ninja Contest : équipes, règles, enjeux</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-card ninja reveal">
+        <div class="day-sidebar">
+          <div><div class="day-num">J2</div><div class="day-label">Jour 2</div></div>
+          <div class="day-subtitle">Ninja Contest<br>& Exécution</div>
+        </div>
+        <div class="day-content">
+          <div class="ninja-badge">🏆 Ninja Contest — La journée qui change tout</div>
+          <h3>Vos commerciaux appellent. Je coach en temps réel.</h3>
+          <p class="day-desc">Compétition entre équipes, classement live, coaching en direct. L'énergie monte, les résultats suivent.</p>
+          <div class="day-items">
+            <div class="day-item"><span class="bullet">→</span> 9h-9h30 — Échauffement : objectifs par équipe, tableau des scores</div>
+            <div class="day-item"><span class="bullet">→</span> 9h30-12h30 — SESSION #1 : phoning live + coaching individuel</div>
+            <div class="day-item"><span class="bullet">→</span> 12h30-13h — Débriefing mi-journée : classement, ajustements</div>
+            <div class="day-item"><span class="bullet">→</span> 14h-16h30 — SESSION #2 : sprint final, derniers RDVs</div>
+            <div class="day-item"><span class="bullet">→</span> 16h30-17h — Classement final + remise des récompenses</div>
+            <div class="day-item"><span class="bullet">→</span> 17h-17h30 — Débrief à chaud avec le manager</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-card reveal">
+        <div class="day-sidebar">
+          <div><div class="day-num">J3</div><div class="day-label">Jour 3</div></div>
+          <div class="day-subtitle">Débriefing<br>& Blueprint</div>
+        </div>
+        <div class="day-content">
+          <h3>Ancrer les résultats. Construire la suite.</h3>
+          <p class="day-desc">Le Jour 3 transforme un électrochoc en méthode durable.</p>
+          <div class="day-items">
+            <div class="day-item"><span class="bullet">→</span> 9h-10h30 — Analyse des résultats J2 (métriques, patterns)</div>
+            <div class="day-item"><span class="bullet">→</span> 10h30-12h — Coaching individuel pour chaque commercial</div>
+            <div class="day-item"><span class="bullet">→</span> 13h30-15h — Plan d'action 30 jours (cadence, rituels, KPIs)</div>
+            <div class="day-item"><span class="bullet">→</span> 15h-16h — Présentation au CEO : diagnostic + recommandations</div>
+            <div class="day-item"><span class="bullet">→</span> 16h-16h30 — Remise du livrable écrit complet</div>
+            <div class="day-item"><span class="bullet">→</span> 16h30-17h — Next steps : discussion Sprint 90 si potentiel confirmé</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NINJA CONTEST -->
+<section class="ninja-section">
+  <div class="container">
+    <div class="ninja-grid">
+      <div class="ninja-content reveal">
+        <div class="section-label" style="color:var(--gold);">Le Ninja Contest</div>
+        <h2>La prospection<br>devient un <span class="gold">sport d'équipe.</span></h2>
+        <p>Vos commerciaux évitent le téléphone parce que prospecter, c'est solitaire et ingrat. Le Ninja Contest change tout : compétition saine, énergie collective, résultats en temps réel.</p>
+        <div class="ninja-features">
+          <div class="ninja-feature">
+            <div class="ninja-icon">⚔️</div>
+            <div><h4>2 équipes. 1 objectif.</h4><p>Chaque appel connecté, objection traitée, RDV posé rapporte des points.</p></div>
+          </div>
+          <div class="ninja-feature">
+            <div class="ninja-icon">📊</div>
+            <div><h4>Classement live</h4><p>Tableau projeté en temps réel. L'émulation pousse chacun à se dépasser.</p></div>
+          </div>
+          <div class="ninja-feature">
+            <div class="ninja-icon">🏆</div>
+            <div><h4>Récompenses & Fierté</h4><p>L'équipe gagnante repart avec un trophée. Le vrai gain : la preuve qu'ils SAVENT prospecter.</p></div>
+          </div>
+          <div class="ninja-feature">
+            <div class="ninja-icon">🧠</div>
+            <div><h4>Coaching intégré</h4><p>Pendant les appels, je circule, j'écoute, je corrige en direct. Ton, pitch, objections — tout est ajusté live.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="scoreboard">
+          <div class="scoreboard-header">
+            <span class="scoreboard-title">🏆 Ninja Contest — Classement</span>
+            <span class="scoreboard-live"><span class="dot"></span> EN DIRECT</span>
+          </div>
+          <div class="scoreboard-body">
+            <div class="score-team">
+              <div class="team-info"><div class="team-color red"></div><span class="team-name">🐉 Dragons Rouges</span></div>
+              <span class="team-score">287 pts</span>
+            </div>
+            <div class="score-team">
+              <div class="team-info"><div class="team-color blue"></div><span class="team-name">⚡ Foudre Bleue</span></div>
+              <span class="team-score">264 pts</span>
+            </div>
+            <div class="score-detail">
+              <div class="score-metric"><div class="score-metric-num">47</div><div class="score-metric-label">Appels connectés</div></div>
+              <div class="score-metric"><div class="score-metric-num">31</div><div class="score-metric-label">Objections traitées</div></div>
+              <div class="score-metric"><div class="score-metric-num">9</div><div class="score-metric-label">RDVs posés</div></div>
+            </div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:0.72rem;color:var(--text-muted);margin-top:0.6rem;">Simulation d'un tableau de scores type en Jour 2</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="resultats">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="section-label">Résultats</div>
+      <h2>Ce qu'ils en disent.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"En une journée, mon équipe a décroché plus de RDVs qu'en 3 semaines de prospection classique. Le format compétition a créé une énergie incroyable."</p>
+        <div class="testi-metric">+65 conversations en 1 jour</div>
+        <div class="testi-author">
+          <div class="testi-avatar">TM</div>
+          <div><div class="testi-name">Thomas M.</div><div class="testi-role">CEO — SaaS B2B, 45 employés</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"On avait fait 2 formations avant. Aucun impact. Avec Ali, il était dans la tranchée avec nous. Mes commerciaux ont compris en 1 jour ce que 6 mois de formation n'avaient pas réussi à ancrer."</p>
+        <div class="testi-metric">3 deals signés en 30 jours</div>
+        <div class="testi-author">
+          <div class="testi-avatar">SL</div>
+          <div><div class="testi-name">Sophie L.</div><div class="testi-role">Head of Sales — Scale-up Tech, 120 employés</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Le Ninja Contest a transformé la dynamique de l'équipe. Mes SDR qui détestaient prospecter se sont battus pour décrocher le plus de RDVs. L'ambiance était électrique."</p>
+        <div class="testi-metric">Pipeline +180% en 30 jours</div>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div><div class="testi-name">Mehdi R.</div><div class="testi-role">CEO — SaaS RH, 30 employés</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="for-who">
+  <div class="container">
+    <div class="for-who-header reveal">
+      <div class="section-label">Pour qui</div>
+      <h2>C'est pour vous si...</h2>
+    </div>
+    <div class="for-who-grid">
+      <div class="for-who-card reveal">
+        <h3>Vous êtes CEO d'une SaaS / Tech B2B</h3>
+        <div class="role">30 à 200 employés · 4 à 8 commerciaux</div>
+        <ul class="for-who-list">
+          <li>Votre pipeline dépend trop de l'inbound ou du bouche-à-oreille</li>
+          <li>Vos commerciaux ont les outils mais ne prospectent pas activement</li>
+          <li>Vous avez déjà investi dans une formation sans résultat durable</li>
+          <li>Vous cherchez un électrochoc pour relancer l'outbound</li>
+        </ul>
+      </div>
+      <div class="for-who-card reveal">
+        <h3>Vous êtes Head of Sales / DirCo</h3>
+        <div class="role">Équipe de SDR, BDR ou Account Executives</div>
+        <ul class="for-who-list">
+          <li>Vos KPIs de prospection stagnent malgré les outils en place</li>
+          <li>Vous passez plus de temps à manager qu'à coacher terrain</li>
+          <li>Le turnover de vos SDR est un problème récurrent</li>
+          <li>Vous voulez installer une cadence qui tient dans la durée</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources" id="ressources">
+  <div class="container">
+    <div class="resources-header reveal">
+      <div class="section-label">Ressources</div>
+      <h2>Outils gratuits pour<br>votre équipe.</h2>
+      <p>Des ressources terrain, actionnables, sans blabla. Pour commencer à améliorer votre prospection dès aujourd'hui.</p>
+    </div>
+    <div class="resources-grid">
+      <a href="#" class="resource-card reveal">
+        <div class="resource-icon">📋</div>
+        <h3>Le Script Commando</h3>
+        <p>Le script d'appel en 4 blocs qui marche pour 80% des SaaS B2B, + les 5 objections les plus fréquentes.</p>
+        <div class="resource-tag">PDF · Téléchargement gratuit</div>
+      </a>
+      <a href="#" class="resource-card reveal">
+        <div class="resource-icon">🔍</div>
+        <h3>Audit Prospection</h3>
+        <p>10 questions pour évaluer votre cadence de prospection actuelle. Identifiez vos blocages en 5 minutes.</p>
+        <div class="resource-tag">Checklist · Gratuit</div>
+      </a>
+      <a href="#" class="resource-card reveal">
+        <div class="resource-icon">🎯</div>
+        <h3>Grille Traitement d'Objections</h3>
+        <p>Les 10 objections les plus fréquentes en cold call B2B avec les réponses terrain testées.</p>
+        <div class="resource-tag">PDF · Téléchargement gratuit</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <div class="section-label">FAQ</div>
+      <h2>Questions fréquentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>3 500€ pour 3 jours, c'est cher.</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">Comparé au coût d'un commercial qui ne prospecte pas (4 000 à 6 000€/mois de salaire chargé pour zéro RDV), le Sprint Commando coûte moins d'une semaine de salaire. En 3 jours, votre équipe génère plus de pipeline qu'en 3 semaines. Et si un seul deal tombe, le Sprint est remboursé 3 à 5 fois.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Nos commerciaux ont déjà été formés.</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">90% des formations commerciales échouent parce qu'elles restent en salle. Le Sprint Commando, c'est l'inverse : je coach en live pendant que vos commerciaux appellent de vrais prospects. La différence entre savoir quoi dire et le dire au bon moment face à un vrai décideur — c'est tout.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Comment se passe le Ninja Contest ?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">L'équipe est divisée en 2 camps. Chaque action rapporte des points : appel connecté (5 pts), objection traitée (10 pts), RDV posé (25 pts). Classement projeté en temps réel. L'atmosphère est compétitive mais bienveillante — émulation, pas pression.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Ça ne marchera pas avec notre secteur.</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">Je travaille exclusivement en B2B SaaS et tech. Le Jour 1 sert à adapter les scripts à votre marché, votre ICP et votre proposition de valeur. On ne travaille pas avec des scripts génériques.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Et si mes commerciaux refusent de jouer le jeu ?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">C'est le scénario le plus fréquent — et celui que le Sprint résout le mieux. Le Jour 1 donne le cadre (scripts solides, objections préparées). Le Jour 2, la dynamique de groupe désinhibe. Quand un commercial décroche 3 RDVs en une matinée, la résistance disparaît.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Que se passe-t-il après les 3 jours ?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">Vous repartez avec : scripts testés terrain, grille d'objections, plan d'action 30 jours, et un suivi à J+15 inclus. Si le potentiel est confirmé, on peut discuter du Sprint 90 (3 mois de coaching hebdomadaire).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="booking">
+  <div class="container">
+    <div class="final-guarantee">✓ Diagnostic gratuit · 30 min · Sans engagement</div>
+    <h2>Prêt à remettre vos commerciaux<br><span class="serif" style="color:var(--coral-light);">au téléphone ?</span></h2>
+    <p>On regarde votre situation ensemble. Je vous dis franchement si le Sprint Commando peut vous aider — et si oui, on bloque les dates.</p>
+    <a href="https://calendly.com" class="btn-primary" style="font-size:1.05rem;padding:1.1rem 2.5rem;">Réserver mon diagnostic gratuit →</a>
+    <p class="final-sub">Vous parlerez directement avec Ali, pas avec un commercial.<br>15 ans d'expérience terrain en vente B2B SaaS.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 SalesCraft · Coaching commercial B2B · Paris</div>
+      <div class="footer-links">
+        <a href="#">LinkedIn</a>
+        <a href="mailto:ali@salescraft.fr">ali@salescraft.fr</a>
+        <a href="#">Mentions légales</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.problem-grid .reveal, .testi-grid .reveal, .days .reveal, .for-who-grid .reveal, .resources-grid .reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.08}s`;
+});
+
+// Marquee: duplicate logos for seamless infinite scroll
+const track = document.getElementById('marqueeTrack');
+if (track) {
+  const logos = track.innerHTML;
+  track.innerHTML = logos + logos; // duplicate for seamless loop
+}
+</script>
+
+</body>
+</html>
