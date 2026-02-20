@@ -6,22 +6,19 @@
 <title>Sprint Commando — SalesCraft | 3 jours pour relancer votre prospection</title>
 <meta name="description" content="En 3 jours, vos commerciaux décrochent le téléphone et remplissent votre pipeline. Coaching terrain, Ninja Contest, résultats mesurables dès J2.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Newsreader:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Newsreader:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════
-   DESIGN SYSTEM — LIGHT BRAND
-   Warm cream base · Deep navy authority · Burnt coral energy
+   DESIGN SYSTEM V4 — MODERN LIGHT
+   Parallax · Animated counters · Carousel · Gradient mesh
    ═══════════════════════════════════════ */
 :root {
-  /* Backgrounds */
   --bg: #FDFBF7;
   --bg-warm: #F7F3ED;
   --bg-navy: #0F1B2D;
   --bg-navy-light: #162338;
   --bg-card: #FFFFFF;
   --bg-muted: #F0EDE6;
-
-  /* Brand colors */
   --navy: #0F1B2D;
   --navy-light: #1E3050;
   --coral: #E05A3A;
@@ -32,18 +29,12 @@
   --teal-bg: rgba(13,148,136,0.06);
   --gold: #D97706;
   --gold-bg: rgba(217,119,6,0.06);
-
-  /* Text */
   --text: #1A1A1A;
   --text-secondary: #4A5568;
   --text-muted: #8896A6;
   --text-inverse: #FDFBF7;
-
-  /* Borders */
   --border: #E8E2D9;
   --border-strong: #D4CDC2;
-
-  /* Misc */
   --radius: 12px;
   --radius-lg: 20px;
   --shadow-sm: 0 1px 3px rgba(15,27,45,0.04);
@@ -64,934 +55,922 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 700;
-  color: var(--navy);
-}
-
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--navy); }
 .serif { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; }
-
 .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
 .section-label {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--coral);
-  margin-bottom: 0.8rem;
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--coral); margin-bottom: 0.8rem;
 }
+
+/* ═══════════════════════════════════════
+   GRADIENT MESH BACKGROUNDS
+   ═══════════════════════════════════════ */
+.mesh-bg {
+  position: absolute; pointer-events: none; z-index: 0;
+}
+.mesh-blob {
+  position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
+  animation: float-blob 20s ease-in-out infinite;
+}
+.mesh-blob.coral { background: rgba(224,90,58,0.12); }
+.mesh-blob.teal { background: rgba(13,148,136,0.08); }
+.mesh-blob.gold { background: rgba(217,119,6,0.08); }
+
+@keyframes float-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+/* ═══════════════════════════════════════
+   PHOTO PLACEHOLDERS
+   ═══════════════════════════════════════ */
+.photo-placeholder {
+  width: 100%; border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--bg-muted), var(--bg-warm));
+  border: 2px dashed var(--border-strong);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0.6rem;
+  overflow: hidden; position: relative;
+  transition: border-color 0.3s;
+}
+.photo-placeholder:hover { border-color: var(--coral); }
+.photo-placeholder img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); }
+.ph-camera { font-size: 2rem; opacity: 0.3; }
+.ph-label { font-size: 0.75rem; color: var(--text-muted); text-align: center; padding: 0 1rem; font-weight: 500; }
+.ph-nano { font-size: 0.62rem; color: var(--coral); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
 
 /* ═══════════════════════════════════════
    NAV
    ═══════════════════════════════════════ */
 nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 0.8rem 0;
-  background: rgba(253,251,247,0.9);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(253,251,247,0.85);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
 }
-
-nav .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+nav.scrolled {
+  background: rgba(253,251,247,0.97);
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 8px rgba(15,27,45,0.04);
 }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
 
 .logo {
-  font-weight: 800;
-  font-size: 1.15rem;
-  letter-spacing: -0.5px;
-  color: var(--navy);
-  text-decoration: none;
+  display: flex; align-items: center; gap: 0.5rem;
+  font-weight: 800; font-size: 1.15rem; letter-spacing: -0.5px;
+  color: var(--navy); text-decoration: none;
 }
-
+.logo-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--navy); color: var(--text-inverse);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.8rem;
+}
+/* When real logo available, replace .logo-icon with img */
 .logo span { color: var(--coral); }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.nav-link {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link { font-size: 0.88rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
 .nav-link:hover { color: var(--navy); }
 
 .nav-cta {
-  padding: 0.55rem 1.3rem;
-  background: var(--navy);
-  color: var(--text-inverse);
-  font-weight: 600;
-  font-size: 0.85rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.2s;
+  padding: 0.55rem 1.3rem; background: var(--coral); color: #FFF;
+  font-weight: 600; font-size: 0.85rem; border-radius: 8px;
+  text-decoration: none; transition: all 0.25s;
+  box-shadow: 0 2px 8px rgba(224,90,58,0.2);
 }
+.nav-cta:hover { background: var(--coral-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(224,90,58,0.25); }
 
-.nav-cta:hover { background: var(--navy-light); transform: translateY(-1px); }
+/* Mobile hamburger */
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--navy); margin: 5px 0; transition: all 0.3s; }
 
 /* ═══════════════════════════════════════
-   HERO
+   HERO — PARALLAX
    ═══════════════════════════════════════ */
 .hero {
-  padding: 9rem 0 5rem;
-  position: relative;
-  overflow: hidden;
+  padding: 10rem 0 5rem;
+  position: relative; overflow: hidden;
+  min-height: 90vh;
+  display: flex; align-items: center;
 }
 
-/* Subtle warm gradient orb */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(224,90,58,0.06), transparent 70%);
-  pointer-events: none;
-}
+.hero .mesh-bg { inset: 0; }
+.hero .mesh-blob:nth-child(1) { width: 500px; height: 500px; top: -10%; right: -5%; }
+.hero .mesh-blob:nth-child(2) { width: 300px; height: 300px; bottom: 10%; left: -5%; animation-delay: -7s; }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
-  align-items: center;
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
 }
 
 .hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 1rem;
-  background: var(--coral-bg);
-  border: 1px solid var(--coral-border);
-  border-radius: 50px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--coral);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.35rem 1rem; background: var(--coral-bg);
+  border: 1px solid var(--coral-border); border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600; color: var(--coral);
   margin-bottom: 1.5rem;
-  animation: fadeIn 0.6s ease-out;
 }
-
 .hero-eyebrow .dot {
   width: 6px; height: 6px; border-radius: 50%; background: var(--coral);
   animation: blink 2s ease-in-out infinite;
 }
 
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 4.2vw, 3.3rem);
-  line-height: 1.12;
-  letter-spacing: -1.5px;
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  line-height: 1.1; letter-spacing: -1.8px;
   margin-bottom: 1.3rem;
-  animation: fadeInUp 0.7s ease-out 0.1s both;
 }
-
 .hero h1 .serif { color: var(--coral); }
+.hero h1 .highlight-line {
+  position: relative; display: inline-block;
+}
+.hero h1 .highlight-line::after {
+  content: ''; position: absolute; bottom: 2px; left: 0; right: 0;
+  height: 8px; background: rgba(224,90,58,0.15); border-radius: 4px; z-index: -1;
+}
 
 .hero-desc {
-  font-size: 1.08rem;
-  color: var(--text-secondary);
-  max-width: 480px;
-  margin-bottom: 2rem;
-  animation: fadeInUp 0.7s ease-out 0.2s both;
+  font-size: 1.1rem; color: var(--text-secondary);
+  max-width: 500px; margin-bottom: 2rem; line-height: 1.7;
 }
 
-.hero-actions {
-  display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;
-  animation: fadeInUp 0.7s ease-out 0.3s both;
-}
+.hero-actions { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.9rem 1.8rem;
-  background: var(--coral);
-  color: #FFF;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 700; font-size: 0.92rem;
+  padding: 0.95rem 2rem; background: var(--coral); color: #FFF;
+  font-family: inherit; font-weight: 700; font-size: 0.95rem;
   border-radius: 10px; text-decoration: none; border: none; cursor: pointer;
-  transition: all 0.25s;
-  box-shadow: 0 2px 8px rgba(224,90,58,0.2);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 14px rgba(224,90,58,0.25);
 }
-
 .btn-primary:hover {
-  background: var(--coral-light); transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(224,90,58,0.25);
+  background: var(--coral-light); transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(224,90,58,0.3);
 }
-
 .btn-ghost {
-  padding: 0.9rem 1.5rem;
-  background: transparent;
-  color: var(--text-secondary);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600; font-size: 0.92rem;
-  border: 1px solid var(--border-strong);
-  border-radius: 10px; text-decoration: none;
-  transition: all 0.25s;
+  padding: 0.95rem 1.5rem; background: transparent; color: var(--text-secondary);
+  font-family: inherit; font-weight: 600; font-size: 0.95rem;
+  border: 1.5px solid var(--border-strong); border-radius: 10px;
+  text-decoration: none; transition: all 0.3s;
 }
-
-.btn-ghost:hover { border-color: var(--navy); color: var(--navy); }
+.btn-ghost:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-2px); }
 
 .hero-trust {
-  display: flex; align-items: center; gap: 0.6rem;
-  margin-top: 1.5rem;
-  animation: fadeInUp 0.7s ease-out 0.4s both;
+  display: flex; align-items: center; gap: 0.8rem; margin-top: 2rem;
 }
-
-.hero-trust-text { font-size: 0.78rem; color: var(--text-muted); }
-.hero-trust-logos { display: flex; gap: 0.3rem; }
-.hero-trust-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); }
-
-/* Hero image / placeholder */
-.hero-visual {
-  position: relative;
-  animation: fadeInUp 0.8s ease-out 0.3s both;
+.hero-trust-avatars { display: flex; }
+.hero-trust-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--bg-muted); border: 2px solid var(--bg);
+  margin-left: -8px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; font-weight: 700; color: var(--text-muted);
 }
+.hero-trust-avatar:first-child { margin-left: 0; }
+.hero-trust-text { font-size: 0.82rem; color: var(--text-muted); }
+.hero-trust-text strong { color: var(--text-secondary); }
 
-.hero-image-box {
-  width: 100%; aspect-ratio: 4/3.2;
-  border-radius: var(--radius-lg);
-  background: var(--bg-warm);
-  border: 1px solid var(--border);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 0.8rem;
-  overflow: hidden; position: relative;
-}
+/* Hero visual */
+.hero-visual { position: relative; }
+.hero-photo { aspect-ratio: 4/3.2; }
 
-.hero-image-box .ph-icon {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: var(--bg-muted); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
-}
-
-.hero-image-box .ph-text {
-  font-size: 0.8rem; color: var(--text-muted); text-align: center; padding: 0 1rem;
-}
-
-/* Floating stat badges */
 .float-badge {
-  position: absolute;
-  padding: 0.65rem 1rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: var(--shadow-lg);
-  z-index: 2;
+  position: absolute; padding: 0.7rem 1.1rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow-lg); z-index: 2;
+  animation: float-badge 6s ease-in-out infinite;
 }
-
 .float-badge.top-right { top: -14px; right: -14px; }
-.float-badge.bottom-left { bottom: -14px; left: -14px; }
-
-.float-num {
-  font-size: 1.5rem; font-weight: 800; color: var(--coral); line-height: 1;
+.float-badge.bottom-left { bottom: -14px; left: -14px; animation-delay: -3s; }
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
-
+.float-num { font-size: 1.6rem; font-weight: 800; color: var(--coral); line-height: 1; }
 .float-label { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.3px; }
 
 /* ═══════════════════════════════════════
-   PROOF BAR
+   PROOF BAR — MARQUEE
    ═══════════════════════════════════════ */
 .proof-bar {
-  padding: 2rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-warm);
-  overflow: hidden;
+  padding: 2rem 0; border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border); background: var(--bg-warm); overflow: hidden;
 }
-
-.proof-bar .proof-header {
-  text-align: center; margin-bottom: 1.2rem;
-}
-
+.proof-bar .proof-header { text-align: center; margin-bottom: 1.2rem; }
 .proof-label {
   font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px;
-  color: var(--text-muted); white-space: nowrap; font-weight: 600;
+  color: var(--text-muted); font-weight: 600;
 }
-
 .marquee-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
+  position: relative; width: 100%; overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
-
 .marquee-track {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  width: max-content;
-  animation: marquee-scroll 25s linear infinite;
+  display: flex; align-items: center; gap: 3rem;
+  width: max-content; animation: marquee-scroll 30s linear infinite;
 }
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
+.marquee-track:hover { animation-play-state: paused; }
 @keyframes marquee-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 .proof-logo {
   font-weight: 700; font-size: 1rem; color: var(--navy);
-  opacity: 0.35; transition: opacity 0.3s; letter-spacing: -0.3px;
-  white-space: nowrap; flex-shrink: 0;
-  padding: 0.5rem 1rem;
+  opacity: 0.3; transition: opacity 0.3s; letter-spacing: -0.3px;
+  white-space: nowrap; flex-shrink: 0; padding: 0.5rem 1rem;
 }
-
 .proof-logo:hover { opacity: 0.7; }
-
-/* Future: replace text with images */
-.proof-logo img {
-  height: 28px; width: auto; filter: grayscale(100%); opacity: 0.5;
-  transition: filter 0.3s, opacity 0.3s;
-}
+.proof-logo img { height: 30px; width: auto; filter: grayscale(100%); opacity: 0.5; transition: all 0.3s; }
 .proof-logo img:hover { filter: grayscale(0%); opacity: 1; }
 
 /* ═══════════════════════════════════════
-   PROBLEM
+   PROBLEM — FIXED TERMINOLOGY
    ═══════════════════════════════════════ */
-.problem { padding: 6rem 0; }
-
+.problem { padding: 6rem 0; position: relative; }
 .problem-header { max-width: 650px; margin-bottom: 3rem; }
-
-.problem-header h2 {
-  font-size: clamp(1.7rem, 2.8vw, 2.3rem); line-height: 1.25; letter-spacing: -0.8px;
-  margin-bottom: 0.8rem;
-}
-
+.problem-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.3rem); line-height: 1.25; letter-spacing: -0.8px; margin-bottom: 0.8rem; }
 .problem-header p { font-size: 1rem; color: var(--text-secondary); }
-
-.problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
 
 .problem-card {
-  padding: 1.6rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s;
-  position: relative;
+  padding: 1.8rem; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative;
+  overflow: hidden;
 }
-
-.problem-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-  border-color: var(--border-strong);
+.problem-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
+  background: var(--coral); transition: height 0.5s;
 }
-
-.problem-num {
-  font-size: 0.68rem; font-weight: 700; color: var(--coral);
-  letter-spacing: 1px; margin-bottom: 0.6rem;
-}
-
+.problem-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.problem-card:hover::before { height: 100%; }
+.problem-num { font-size: 0.68rem; font-weight: 700; color: var(--coral); letter-spacing: 1px; margin-bottom: 0.6rem; }
 .problem-card h3 { font-size: 1rem; margin-bottom: 0.4rem; letter-spacing: -0.2px; }
-
 .problem-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; }
 
 /* ═══════════════════════════════════════
-   COST OF INACTION
+   COST OF INACTION — ANIMATED COUNTERS
    ═══════════════════════════════════════ */
-.cost-section { padding: 0 0 6rem; }
-
+.cost-section { padding: 0 0 5rem; }
 .cost-card {
-  background: var(--bg-navy);
-  border-radius: var(--radius-lg);
-  padding: 3rem;
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
-  color: var(--text-inverse);
+  background: var(--bg-navy); border-radius: var(--radius-lg);
+  padding: 3.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+  color: var(--text-inverse); position: relative; overflow: hidden;
+}
+.cost-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(224,90,58,0.08), transparent 60%);
+}
+.cost-item { text-align: center; position: relative; z-index: 1; }
+.cost-num {
+  font-size: 2.8rem; font-weight: 800; color: var(--coral-light); line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.cost-label { font-size: 0.86rem; color: rgba(253,251,247,0.65); line-height: 1.4; }
+
+/* ═══════════════════════════════════════
+   METHOD — LA MÉTHODE SALESCRAFT
+   ═══════════════════════════════════════ */
+.method { padding: 6rem 0; background: var(--bg-warm); position: relative; overflow: hidden; }
+.method-header { text-align: center; max-width: 650px; margin: 0 auto 3.5rem; }
+.method-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.8px; margin-bottom: 0.8rem; }
+.method-header p { color: var(--text-secondary); font-size: 1rem; }
+
+.method-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative;
+  max-width: 1000px; margin: 0 auto;
 }
 
-.cost-num { font-size: 2.6rem; font-weight: 800; color: var(--coral-light); line-height: 1; margin-bottom: 0.5rem; }
-.cost-label { font-size: 0.86rem; color: rgba(253,251,247,0.65); line-height: 1.4; }
-.cost-item { text-align: center; }
+/* Connection line between steps */
+.method-steps::before {
+  content: ''; position: absolute; top: 44px; left: 12.5%; right: 12.5%;
+  height: 2px; background: linear-gradient(to right, var(--coral), var(--gold), var(--teal), var(--navy));
+  z-index: 0;
+}
+
+.method-step {
+  text-align: center; position: relative; z-index: 1;
+  padding: 0 1rem;
+}
+
+.method-step-num {
+  width: 88px; height: 88px; border-radius: 50%; margin: 0 auto 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; font-weight: 800; color: #FFF;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.method-step:hover .method-step-num { transform: scale(1.1) rotate(-3deg); }
+
+.method-step:nth-child(1) .method-step-num { background: var(--coral); }
+.method-step:nth-child(2) .method-step-num { background: var(--gold); }
+.method-step:nth-child(3) .method-step-num { background: var(--teal); }
+.method-step:nth-child(4) .method-step-num { background: var(--navy); }
+
+.method-step h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+.method-step p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+.method-tagline {
+  text-align: center; margin-top: 3rem;
+  font-size: 1.1rem; color: var(--text-secondary);
+}
+.method-tagline strong { color: var(--navy); }
 
 /* ═══════════════════════════════════════
    ABOUT / COACH
    ═══════════════════════════════════════ */
-.about { padding: 6rem 0; background: var(--bg-warm); }
-
-.about-grid {
-  display: grid; grid-template-columns: 300px 1fr; gap: 3.5rem; align-items: start;
-}
-
-.about-photo {
-  width: 100%; aspect-ratio: 3/3.5;
-  border-radius: var(--radius-lg);
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 0.5rem;
-}
-
-.about-photo .ph-icon { font-size: 2rem; }
-.about-photo .ph-text { font-size: 0.78rem; color: var(--text-muted); }
-
-.about-content h2 {
-  font-size: clamp(1.6rem, 2.5vw, 2rem); letter-spacing: -0.5px; margin-bottom: 1rem;
-}
-
-.about-content p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; }
-
-.about-credentials {
-  display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem;
-}
-
+.about { padding: 6rem 0; }
+.about-grid { display: grid; grid-template-columns: 320px 1fr; gap: 3.5rem; align-items: center; }
+.about-photo { aspect-ratio: 3/3.8; }
+.about-content h2 { font-size: clamp(1.6rem, 2.5vw, 2rem); letter-spacing: -0.5px; margin-bottom: 1rem; }
+.about-content p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; }
+.about-credentials { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
 .credential {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.4rem 0.9rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 50px;
+  padding: 0.45rem 1rem; background: var(--bg-warm);
+  border: 1px solid var(--border); border-radius: 50px;
   font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);
+  transition: all 0.3s;
 }
-
+.credential:hover { border-color: var(--coral); background: var(--coral-bg); }
 .credential .icon { font-size: 0.9rem; }
 
 /* ═══════════════════════════════════════
    OFFER / PRICING
    ═══════════════════════════════════════ */
-.offer { padding: 6rem 0; }
-
+.offer { padding: 6rem 0; background: var(--bg-warm); }
 .offer-header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
-
-.offer-header h2 {
-  font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.8px; margin-bottom: 0.8rem;
-}
-
+.offer-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.8px; margin-bottom: 0.8rem; }
 .offer-header p { font-size: 1rem; color: var(--text-secondary); }
 
 .pricing-card {
-  max-width: 600px; margin: 0 auto 3rem;
-  background: var(--bg-card);
-  border: 2px solid var(--navy);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
-  box-shadow: var(--shadow-lg);
-  position: relative;
+  max-width: 620px; margin: 0 auto 3rem;
+  background: var(--bg-card); border: 2px solid var(--navy);
+  border-radius: var(--radius-lg); padding: 2.5rem;
+  box-shadow: var(--shadow-lg); position: relative;
+  transition: transform 0.3s;
 }
+.pricing-card:hover { transform: translateY(-4px); }
 
 .pricing-badge {
   position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-  padding: 0.3rem 1.2rem;
-  background: var(--navy); color: var(--text-inverse);
+  padding: 0.35rem 1.3rem; background: var(--coral); color: #FFF;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
   text-transform: uppercase; border-radius: 50px; white-space: nowrap;
 }
-
 .pricing-top { text-align: center; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-
 .pricing-name { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.3rem; }
-
 .pricing-tagline { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.2rem; }
-
-.pricing-amount { font-size: 3.5rem; font-weight: 800; color: var(--navy); line-height: 1; }
+.pricing-amount { font-size: 3.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
 .pricing-unit { font-size: 0.9rem; color: var(--text-muted); }
 .pricing-compare { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem; }
 
-.pricing-includes {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; margin-bottom: 2rem;
-}
-
-.pricing-item {
-  display: flex; align-items: center; gap: 0.5rem;
-  font-size: 0.86rem; color: var(--text-secondary);
-}
-
+.pricing-includes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 2rem; }
+.pricing-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.86rem; color: var(--text-secondary); }
 .pricing-item .check { color: var(--teal); font-weight: 700; flex-shrink: 0; }
 
 .pricing-cta {
-  display: block; width: 100%; padding: 1rem;
-  background: var(--coral); color: #FFF;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 700; font-size: 1rem;
-  border: none; border-radius: 10px; cursor: pointer;
-  text-decoration: none; text-align: center;
-  transition: all 0.25s;
-  box-shadow: 0 2px 8px rgba(224,90,58,0.2);
+  display: block; width: 100%; padding: 1.1rem;
+  background: var(--coral); color: #FFF; font-family: inherit;
+  font-weight: 700; font-size: 1rem; border: none; border-radius: 10px;
+  cursor: pointer; text-decoration: none; text-align: center;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 14px rgba(224,90,58,0.25);
 }
-
 .pricing-cta:hover {
-  background: var(--coral-light); transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(224,90,58,0.25);
+  background: var(--coral-light); transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(224,90,58,0.3);
 }
-
 .pricing-note { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: 0.8rem; }
 
 /* ═══════════════════════════════════════
-   PROGRAMME — 3 DAYS
+   BEFORE / AFTER
+   ═══════════════════════════════════════ */
+.before-after { padding: 6rem 0; }
+.ba-header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+.ba-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 0.5rem; }
+.ba-header p { color: var(--text-secondary); font-size: 1rem; }
+
+.ba-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: start; }
+
+.ba-card {
+  padding: 2rem; border-radius: var(--radius-lg); position: relative;
+}
+.ba-card.before {
+  background: #FFF; border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.ba-card.after {
+  background: var(--bg-navy); color: var(--text-inverse);
+  box-shadow: var(--shadow-lg);
+}
+.ba-card h3 { font-size: 1.1rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+.ba-card.after h3 { color: var(--text-inverse); }
+
+.ba-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.ba-list li {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  font-size: 0.88rem; line-height: 1.5;
+}
+.ba-card.before .ba-list li { color: var(--text-secondary); }
+.ba-card.after .ba-list li { color: rgba(253,251,247,0.8); }
+.ba-icon { flex-shrink: 0; font-size: 0.85rem; margin-top: 2px; }
+
+.ba-arrow {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; color: var(--coral); padding-top: 3rem;
+}
+
+/* ═══════════════════════════════════════
+   PROGRAMME — 3 DAYS WITH PHOTOS
    ═══════════════════════════════════════ */
 .programme { padding: 6rem 0; background: var(--bg-warm); }
-
 .programme-header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
-
-.programme-header h2 {
-  font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.8px; margin-bottom: 0.5rem;
-}
-
+.programme-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.8px; margin-bottom: 0.5rem; }
 .programme-header p { color: var(--text-secondary); font-size: 1rem; }
 
-.days { display: flex; flex-direction: column; gap: 1.2rem; }
+.days { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .day-card {
-  display: grid; grid-template-columns: 180px 1fr;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s, transform 0.2s;
+  display: grid; grid-template-columns: 200px 1fr;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-
-.day-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.day-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 
 .day-sidebar {
-  padding: 2rem;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  text-align: center;
-  border-right: 1px solid var(--border);
-  background: var(--bg-warm);
+  padding: 2rem; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  border-right: 1px solid var(--border); background: var(--bg-warm);
+  position: relative;
 }
-
+.day-photo-mini {
+  width: 100%; aspect-ratio: 16/10; border-radius: 8px;
+  background: var(--bg-muted); border: 1px dashed var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; color: var(--text-muted); text-align: center;
+  margin-bottom: 0.8rem; overflow: hidden;
+  padding: 0.3rem;
+}
 .day-num { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
 .day-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-top: 0.2rem; }
 .day-subtitle { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-top: 0.6rem; }
 
 .day-content { padding: 2rem 2.5rem; }
-
 .day-content h3 { font-size: 1.15rem; letter-spacing: -0.3px; margin-bottom: 0.4rem; }
 .day-content .day-desc { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.2rem; }
-
-.day-items { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; }
-
-.day-item {
-  display: flex; align-items: flex-start; gap: 0.45rem;
-  font-size: 0.84rem; color: var(--text-secondary);
-}
-
+.day-items { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.day-item { display: flex; align-items: flex-start; gap: 0.45rem; font-size: 0.84rem; color: var(--text-secondary); }
 .day-item .bullet { color: var(--coral); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-/* Ninja Contest day */
 .day-card.ninja { border-color: var(--gold); border-width: 2px; }
 .day-card.ninja .day-sidebar { background: var(--gold-bg); }
 .day-card.ninja .day-num { color: var(--gold); }
-
 .ninja-badge {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.3rem 0.8rem;
-  background: var(--gold-bg); border: 1px solid rgba(217,119,6,0.15);
-  border-radius: 50px;
+  padding: 0.3rem 0.8rem; background: var(--gold-bg);
+  border: 1px solid rgba(217,119,6,0.15); border-radius: 50px;
   font-size: 0.72rem; font-weight: 700; color: var(--gold); letter-spacing: 0.3px;
   margin-bottom: 0.8rem;
 }
 
 /* ═══════════════════════════════════════
-   NINJA CONTEST DETAIL
+   NINJA CONTEST
    ═══════════════════════════════════════ */
-.ninja-section { padding: 6rem 0; }
-
+.ninja-section { padding: 6rem 0; position: relative; overflow: hidden; }
 .ninja-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-
 .ninja-content h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 1rem; }
 .ninja-content h2 .gold { color: var(--gold); }
 .ninja-content > p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
 .ninja-features { display: flex; flex-direction: column; gap: 1rem; }
-
 .ninja-feature { display: flex; gap: 0.8rem; align-items: flex-start; }
-
 .ninja-icon {
-  width: 38px; height: 38px; flex-shrink: 0; border-radius: 10px;
+  width: 42px; height: 42px; flex-shrink: 0; border-radius: 12px;
   background: var(--gold-bg); border: 1px solid rgba(217,119,6,0.12);
-  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  transition: transform 0.3s;
 }
-
+.ninja-feature:hover .ninja-icon { transform: rotate(-5deg) scale(1.1); }
 .ninja-feature h4 { font-size: 0.92rem; margin-bottom: 0.15rem; }
 .ninja-feature p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0; }
 
-/* Scoreboard */
+/* Ninja photo + scoreboard stack */
+.ninja-visual { display: flex; flex-direction: column; gap: 1.5rem; }
+.ninja-photo { aspect-ratio: 16/10; }
+
 .scoreboard {
   background: var(--bg-navy); border-radius: var(--radius-lg); overflow: hidden;
   box-shadow: var(--shadow-lg); color: var(--text-inverse);
 }
-
 .scoreboard-header {
-  padding: 1rem 1.5rem;
-  background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 1rem 1.5rem; background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
   display: flex; justify-content: space-between; align-items: center;
 }
-
 .scoreboard-title { font-weight: 700; font-size: 0.88rem; }
-
-.scoreboard-live {
-  display: flex; align-items: center; gap: 0.4rem;
-  font-size: 0.72rem; color: #34D399; font-weight: 600;
-}
-
-.scoreboard-live .dot {
-  width: 6px; height: 6px; border-radius: 50%; background: #34D399;
-  animation: blink 1.5s ease-in-out infinite;
-}
+.scoreboard-live { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: #34D399; font-weight: 600; }
+.scoreboard-live .dot { width: 6px; height: 6px; border-radius: 50%; background: #34D399; animation: blink 1.5s ease-in-out infinite; }
 
 .scoreboard-body { padding: 1rem 1.5rem; }
-
-.score-team {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
+.score-team { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .score-team:last-of-type { border-bottom: none; }
-
 .team-info { display: flex; align-items: center; gap: 0.6rem; }
 .team-color { width: 10px; height: 10px; border-radius: 50%; }
 .team-color.red { background: #EF4444; }
 .team-color.blue { background: #3B82F6; }
 .team-name { font-weight: 600; font-size: 0.88rem; }
 .team-score { font-weight: 800; font-size: 1.3rem; color: var(--gold); }
-
 .score-detail { display: flex; gap: 0.8rem; padding-top: 0.8rem; }
-
-.score-metric {
-  text-align: center; flex: 1;
-  padding: 0.6rem; background: rgba(255,255,255,0.04); border-radius: 8px;
-}
-
+.score-metric { text-align: center; flex: 1; padding: 0.6rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
 .score-metric-num { font-weight: 800; font-size: 1.1rem; }
 .score-metric-label { font-size: 0.62rem; color: rgba(253,251,247,0.45); text-transform: uppercase; letter-spacing: 0.5px; }
 
 /* ═══════════════════════════════════════
-   TESTIMONIALS
+   TESTIMONIALS — HORIZONTAL CAROUSEL
    ═══════════════════════════════════════ */
-.testimonials { padding: 6rem 0; background: var(--bg-warm); }
-
-.testimonials-header { text-align: center; max-width: 550px; margin: 0 auto 3rem; }
+.testimonials { padding: 6rem 0; background: var(--bg-warm); overflow: hidden; }
+.testimonials-header { text-align: center; max-width: 550px; margin: 0 auto 2rem; }
 .testimonials-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 0.3rem; }
+.testimonials-header p { color: var(--text-secondary); font-size: 0.95rem; }
 
-.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.testi-carousel-wrapper { position: relative; }
+
+.testi-carousel {
+  display: flex; gap: 1.2rem; overflow-x: auto;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  padding: 1rem 1.5rem 2rem;
+  scrollbar-width: none;
+}
+.testi-carousel::-webkit-scrollbar { display: none; }
 
 .testi-card {
-  padding: 1.8rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s, transform 0.2s;
+  flex: 0 0 340px; scroll-snap-align: start;
+  padding: 1.8rem; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); transition: all 0.3s;
 }
-
-.testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-
+.testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 .testi-stars { color: var(--gold); font-size: 0.82rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
-
-.testi-quote {
-  font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65;
-  margin-bottom: 1.2rem;
-}
-
+.testi-quote { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem; }
 .testi-metric {
   display: inline-block; padding: 0.25rem 0.7rem;
   background: var(--teal-bg); border: 1px solid rgba(13,148,136,0.12);
-  border-radius: 6px;
-  font-size: 0.75rem; font-weight: 700; color: var(--teal);
+  border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: var(--teal);
   margin-bottom: 1rem;
 }
-
 .testi-author { display: flex; align-items: center; gap: 0.7rem; }
-
 .testi-avatar {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: var(--bg-muted); border: 1px solid var(--border);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-muted); border: 2px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   font-weight: 700; font-size: 0.75rem; color: var(--text-muted);
+  overflow: hidden;
 }
-
+.testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .testi-name { font-weight: 700; font-size: 0.82rem; color: var(--navy); }
 .testi-role { font-size: 0.72rem; color: var(--text-muted); }
+
+/* Carousel nav arrows */
+.carousel-nav {
+  display: flex; justify-content: center; gap: 0.8rem; margin-top: 1rem;
+}
+.carousel-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.3s;
+  font-size: 1rem; color: var(--navy);
+}
+.carousel-btn:hover { background: var(--navy); color: #FFF; border-color: var(--navy); }
+
+/* ═══════════════════════════════════════
+   ROI CALCULATOR
+   ═══════════════════════════════════════ */
+.roi-calc { padding: 6rem 0; }
+.roi-header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+.roi-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 0.5rem; }
+.roi-header p { color: var(--text-secondary); font-size: 1rem; }
+
+.roi-card {
+  max-width: 700px; margin: 0 auto;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.roi-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+.roi-input-group label {
+  display: block; font-size: 0.82rem; font-weight: 600; color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.roi-input-group input[type="range"] {
+  width: 100%; accent-color: var(--coral); cursor: pointer;
+}
+.roi-input-value {
+  display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+.roi-input-current {
+  font-size: 1.3rem; font-weight: 800; color: var(--coral);
+  text-align: center; margin-top: 0.2rem;
+}
+
+.roi-result {
+  background: var(--bg-navy); border-radius: var(--radius);
+  padding: 2rem; text-align: center; color: var(--text-inverse);
+}
+.roi-result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+.roi-metric-big { font-size: 2rem; font-weight: 800; color: var(--coral-light); }
+.roi-metric-label { font-size: 0.72rem; color: rgba(253,251,247,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+.roi-verdict { font-size: 0.92rem; color: rgba(253,251,247,0.7); margin-top: 0.5rem; }
+.roi-verdict strong { color: var(--coral-light); }
 
 /* ═══════════════════════════════════════
    FOR WHO
    ═══════════════════════════════════════ */
-.for-who { padding: 6rem 0; }
-
+.for-who { padding: 6rem 0; background: var(--bg-warm); }
 .for-who-header { text-align: center; max-width: 550px; margin: 0 auto 3rem; }
 .for-who-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 0.3rem; }
-
 .for-who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; max-width: 900px; margin: 0 auto; }
-
 .for-who-card {
-  padding: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  padding: 2rem; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  transition: all 0.3s;
 }
-
+.for-who-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 .for-who-card h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
 .for-who-card .role { font-size: 0.78rem; color: var(--coral); font-weight: 600; margin-bottom: 1rem; }
-
 .for-who-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
-
 .for-who-list li {
   font-size: 0.86rem; color: var(--text-secondary);
   display: flex; align-items: flex-start; gap: 0.45rem;
 }
-
 .for-who-list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
 
 /* ═══════════════════════════════════════
-   RESOURCES CTA
+   RESOURCES CTA (links to separate page)
    ═══════════════════════════════════════ */
-.resources { padding: 6rem 0; background: var(--bg-warm); }
-
+.resources { padding: 6rem 0; }
 .resources-header { text-align: center; max-width: 550px; margin: 0 auto 2.5rem; }
 .resources-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; margin-bottom: 0.5rem; }
 .resources-header p { color: var(--text-secondary); font-size: 0.95rem; }
-
 .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-
 .resource-card {
-  padding: 1.8rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  text-decoration: none;
-  transition: all 0.3s;
+  padding: 1.8rem; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  text-decoration: none; transition: all 0.3s; cursor: pointer;
 }
-
-.resource-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-
+.resource-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--coral-border); }
 .resource-icon {
-  width: 44px; height: 44px; border-radius: 10px;
+  width: 48px; height: 48px; border-radius: 12px;
   background: var(--coral-bg); border: 1px solid var(--coral-border);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; margin-bottom: 1rem;
+  font-size: 1.3rem; margin-bottom: 1rem;
 }
-
 .resource-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--navy); }
 .resource-card p { font-size: 0.82rem; color: var(--text-muted); }
-
 .resource-tag {
   display: inline-block; margin-top: 0.8rem;
-  padding: 0.2rem 0.6rem;
-  background: var(--bg-muted);
-  border-radius: 4px;
-  font-size: 0.68rem; font-weight: 600; color: var(--text-muted);
-  text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 0.2rem 0.6rem; background: var(--bg-muted);
+  border-radius: 4px; font-size: 0.68rem; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
 }
+
+.resources-more {
+  text-align: center; margin-top: 2rem;
+}
+.resources-more a {
+  color: var(--coral); font-weight: 600; font-size: 0.92rem;
+  text-decoration: none; border-bottom: 2px solid var(--coral-border);
+  transition: all 0.3s;
+}
+.resources-more a:hover { border-bottom-color: var(--coral); }
 
 /* ═══════════════════════════════════════
    FAQ
    ═══════════════════════════════════════ */
-.faq { padding: 6rem 0; }
-
+.faq { padding: 6rem 0; background: var(--bg-warm); }
 .faq-header { text-align: center; max-width: 550px; margin: 0 auto 2.5rem; }
 .faq-header h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.6px; }
-
 .faq-list { max-width: 720px; margin: 0 auto; }
-
 .faq-item { border-bottom: 1px solid var(--border); cursor: pointer; }
-
 .faq-q {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem 0;
-  font-weight: 600; font-size: 0.95rem; color: var(--navy);
+  padding: 1.3rem 0; font-weight: 600; font-size: 0.95rem; color: var(--navy);
+  transition: color 0.2s;
 }
-
+.faq-item:hover .faq-q { color: var(--coral); }
 .faq-toggle {
-  width: 26px; height: 26px; border-radius: 50%;
-  border: 1px solid var(--border-strong);
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
   display: flex; align-items: center; justify-content: center;
   color: var(--coral); font-size: 1rem; flex-shrink: 0;
-  transition: transform 0.3s, background 0.3s;
+  transition: all 0.3s;
 }
-
-.faq-item.open .faq-toggle { transform: rotate(45deg); background: var(--coral-bg); }
-
+.faq-item.open .faq-toggle { transform: rotate(45deg); background: var(--coral); color: #FFF; border-color: var(--coral); }
 .faq-a {
   max-height: 0; overflow: hidden;
   transition: max-height 0.4s ease, padding 0.3s ease;
   font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;
 }
-
-.faq-item.open .faq-a { max-height: 500px; padding-bottom: 1.2rem; }
+.faq-item.open .faq-a { max-height: 500px; padding-bottom: 1.3rem; }
 
 /* ═══════════════════════════════════════
    FINAL CTA
    ═══════════════════════════════════════ */
 .final-cta {
-  padding: 6rem 0;
-  background: var(--bg-navy);
-  text-align: center;
-  color: var(--text-inverse);
-  position: relative;
-  overflow: hidden;
+  padding: 7rem 0; background: var(--bg-navy);
+  text-align: center; color: var(--text-inverse);
+  position: relative; overflow: hidden;
 }
-
 .final-cta::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 80%, rgba(224,90,58,0.08), transparent 60%);
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 80%, rgba(224,90,58,0.1), transparent 60%);
 }
-
 .final-cta .container { position: relative; z-index: 1; }
-
 .final-cta h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -0.8px;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem); letter-spacing: -0.8px;
   margin-bottom: 0.8rem; color: var(--text-inverse);
 }
-
-.final-cta p {
-  color: rgba(253,251,247,0.6); font-size: 1.05rem;
-  max-width: 520px; margin: 0 auto 2rem;
-}
-
+.final-cta p { color: rgba(253,251,247,0.6); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2rem; }
 .final-guarantee {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.4rem 1rem;
-  background: rgba(13,148,136,0.1); border: 1px solid rgba(13,148,136,0.2);
-  border-radius: 50px;
-  font-size: 0.78rem; font-weight: 600; color: #34D399;
-  margin-bottom: 1.5rem;
+  padding: 0.4rem 1rem; background: rgba(13,148,136,0.1);
+  border: 1px solid rgba(13,148,136,0.2); border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600; color: #34D399; margin-bottom: 1.5rem;
 }
-
-.final-sub {
-  font-size: 0.82rem; color: rgba(253,251,247,0.4); margin-top: 1.5rem;
-}
+.final-sub { font-size: 0.82rem; color: rgba(253,251,247,0.4); margin-top: 1.5rem; }
 
 /* ═══════════════════════════════════════
    FOOTER
    ═══════════════════════════════════════ */
 footer {
-  padding: 2.5rem 0;
-  border-top: 1px solid var(--border);
-  background: var(--bg);
+  padding: 2.5rem 0; border-top: 1px solid var(--border); background: var(--bg);
 }
-
-.footer-inner {
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 1rem;
-}
-
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .footer-left { font-size: 0.78rem; color: var(--text-muted); }
-
 .footer-links { display: flex; gap: 1.5rem; }
-
-.footer-links a {
-  font-size: 0.78rem; color: var(--text-muted);
-  text-decoration: none; transition: color 0.2s;
-}
-
+.footer-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--coral); }
 
 /* ═══════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════ */
 @media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero { min-height: auto; padding: 8rem 0 4rem; }
   .hero-visual { max-width: 480px; margin: 0 auto; }
   .problem-grid { grid-template-columns: 1fr; }
   .cost-card { grid-template-columns: 1fr; gap: 1.5rem; }
+  .method-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .method-steps::before { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 280px; margin: 0 auto; }
   .day-card { grid-template-columns: 1fr; }
-  .day-sidebar {
-    flex-direction: row; gap: 1rem;
-    border-right: none; border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem;
-  }
+  .day-sidebar { flex-direction: row; gap: 1rem; border-right: none; border-bottom: 1px solid var(--border); padding: 1rem 2rem; }
+  .day-photo-mini { display: none; }
   .day-items { grid-template-columns: 1fr; }
   .ninja-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .testi-grid { grid-template-columns: 1fr; }
+  .testi-card { flex: 0 0 300px; }
   .for-who-grid { grid-template-columns: 1fr; }
-  .about-grid { grid-template-columns: 1fr; }
-  .about-photo { max-width: 250px; margin: 0 auto; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .ba-arrow { transform: rotate(90deg); padding: 0; }
+  .roi-inputs { grid-template-columns: 1fr; }
+  .roi-result-grid { grid-template-columns: 1fr; gap: 0.5rem; }
   .pricing-includes { grid-template-columns: 1fr; }
   .resources-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
+  .nav-toggle { display: block; }
 }
 
 @media (max-width: 480px) {
   .hero { padding: 6rem 0 3rem; }
-  .hero h1 { font-size: 1.9rem; }
+  .hero h1 { font-size: 1.9rem; letter-spacing: -1px; }
   .hero-actions { flex-direction: column; align-items: stretch; }
-  .marquee-track { gap: 2rem; animation-duration: 18s; }
-  .proof-logo { font-size: 0.85rem; padding: 0.3rem 0.6rem; }
-  .problem, .offer, .programme, .ninja-section, .testimonials, .faq, .for-who, .about, .resources { padding: 3.5rem 0; }
-  .cost-card { padding: 2rem; }
+  .marquee-track { gap: 2rem; }
+  .method-steps { grid-template-columns: 1fr 1fr; }
+  .problem, .offer, .programme, .ninja-section, .testimonials, .faq, .for-who, .about, .resources, .method, .before-after, .roi-calc { padding: 3.5rem 0; }
+  .cost-card { padding: 1.5rem; }
   .pricing-card { padding: 1.5rem; }
   .day-content { padding: 1.5rem; }
   .float-badge { display: none; }
+  .testi-card { flex: 0 0 280px; }
+  .roi-card { padding: 1.5rem; }
 }
 
-/* Scroll reveal */
+/* ═══════════════════════════════════════
+   SCROLL REVEAL + PARALLAX
+   ═══════════════════════════════════════ */
 .reveal {
-  opacity: 0; transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-left {
+  opacity: 0; transform: translateX(-30px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0; transform: translateX(30px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* Parallax elements */
+[data-parallax] {
+  transition: transform 0.1s linear;
+}
+
+/* Sticky CTA on mobile */
+.sticky-cta {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  padding: 0.8rem 1.5rem; background: rgba(253,251,247,0.97);
+  backdrop-filter: blur(20px); border-top: 1px solid var(--border);
+  z-index: 99; text-align: center;
+  transform: translateY(100%); transition: transform 0.3s;
+}
+.sticky-cta.visible { transform: translateY(0); }
+@media (max-width: 900px) {
+  .sticky-cta { display: block; }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <div class="container">
-    <a href="#" class="logo">Sales<span>Craft</span></a>
+    <a href="#" class="logo">
+      <div class="logo-icon">SC</div>
+      Sales<span>Craft</span>
+    </a>
     <div class="nav-links">
+      <a href="#methode" class="nav-link">Méthode</a>
       <a href="#programme" class="nav-link">Programme</a>
       <a href="#resultats" class="nav-link">Résultats</a>
       <a href="#ressources" class="nav-link">Ressources</a>
       <a href="#about" class="nav-link">À propos</a>
       <a href="#booking" class="nav-cta">Réserver un diagnostic →</a>
     </div>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="mesh-bg">
+    <div class="mesh-blob coral" style="width:500px;height:500px;top:-10%;right:-5%;" data-parallax="0.03"></div>
+    <div class="mesh-blob teal" style="width:300px;height:300px;bottom:10%;left:-5%;" data-parallax="0.05"></div>
+  </div>
   <div class="container">
     <div class="hero-grid">
       <div>
         <div class="hero-eyebrow"><span class="dot"></span> Coaching terrain · 3 jours · Résultats immédiats</div>
-        <h1>Vos commerciaux<br>ne décrochent pas<br>le téléphone.<br><span class="serif">On change ça.</span></h1>
+        <h1>Vos commerciaux<br>ne décrochent pas<br>le téléphone.<br><span class="serif highlight-line">On change ça.</span></h1>
         <p class="hero-desc">Le Sprint Commando, c'est 3 jours dans vos locaux pour remettre votre équipe en mouvement. Audit, coaching live, compétition entre équipes. Ils repartent avec des RDVs dans l'agenda — et l'envie de recommencer.</p>
         <div class="hero-actions">
           <a href="#booking" class="btn-primary">Réserver un diagnostic gratuit →</a>
           <a href="#programme" class="btn-ghost">Voir le programme</a>
         </div>
         <div class="hero-trust">
-          <span class="hero-trust-text">Déjà adopté par des équipes chez</span>
-          <span style="font-weight:600;font-size:0.78rem;color:var(--text-muted);">Mendo · Cenef-IT · Bloomays</span>
+          <div class="hero-trust-avatars">
+            <div class="hero-trust-avatar">JL</div>
+            <div class="hero-trust-avatar">SM</div>
+            <div class="hero-trust-avatar">PD</div>
+            <div class="hero-trust-avatar">AT</div>
+          </div>
+          <span class="hero-trust-text">Adopté par <strong>50+ équipes</strong> en SaaS B2B</span>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-image-box">
-          <div class="ph-icon">📞</div>
-          <p class="ph-text">Photo : Ali en coaching live<br>avec une équipe commerciale</p>
+      <div class="hero-visual" data-parallax="0.02">
+        <div class="photo-placeholder hero-photo" id="photo-hero">
+          <div class="ph-camera">📞</div>
+          <p class="ph-label">Ali en coaching live avec une équipe commerciale en open space</p>
+          <span class="ph-nano">→ Nano Bananar #1</span>
         </div>
         <div class="float-badge top-right">
-          <div class="float-num">65</div>
+          <div class="float-num" data-count="65">0</div>
           <div class="float-label">Conversations en 1 jour</div>
         </div>
         <div class="float-badge bottom-left">
-          <div class="float-num">12</div>
+          <div class="float-num" data-count="12">0</div>
           <div class="float-label">RDVs qualifiés posés</div>
         </div>
       </div>
@@ -1018,7 +997,7 @@ footer {
   </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- PROBLEM — FIXED TERMINOLOGY -->
 <section class="problem">
   <div class="container">
     <div class="problem-header reveal">
@@ -1034,8 +1013,8 @@ footer {
       </div>
       <div class="problem-card reveal">
         <div class="problem-num">02</div>
-        <h3>Vos SDR coûtent cher pour rien</h3>
-        <p>Coût réel d'un SDR : 2,3× son salaire brut. Turnover : 34%. Chaque départ = 23 000€ perdus + 3 mois de chaos. Et entre-temps, moins de 2h/semaine au téléphone.</p>
+        <h3>Vos commerciaux coûtent cher pour rien</h3>
+        <p>Coût réel d'un commercial : 2,3× son salaire brut. Turnover : 34%. Chaque départ = 23 000€ perdus + 3 mois de chaos. Et entre-temps, moins de 2h/semaine au téléphone.</p>
       </div>
       <div class="problem-card reveal">
         <div class="problem-num">03</div>
@@ -1044,8 +1023,8 @@ footer {
       </div>
       <div class="problem-card reveal">
         <div class="problem-num">04</div>
-        <h3>Personne ne coach sur le terrain</h3>
-        <p>Votre Head of Sales passe 30% de son temps à manager, pas à coacher. Personne ne s'assoit à côté de chaque commercial pour corriger le pitch en temps réel.</p>
+        <h3>Le coaching terrain n'existe pas</h3>
+        <p>Entre le recrutement, le reporting et les réunions, il ne reste plus de temps pour coacher. Personne ne s'assoit à côté de chaque commercial pour corriger le pitch en temps réel.</p>
       </div>
     </div>
   </div>
@@ -1056,17 +1035,53 @@ footer {
   <div class="container">
     <div class="cost-card reveal">
       <div class="cost-item">
-        <div class="cost-num">23 000€</div>
-        <div class="cost-label">Coût moyen d'un départ de SDR<br>(recrutement + formation + pipeline perdu)</div>
+        <div class="cost-num"><span data-count="23000" class="counter">0</span>€</div>
+        <div class="cost-label">Coût moyen d'un départ de commercial<br>(recrutement + formation + pipeline perdu)</div>
       </div>
       <div class="cost-item">
-        <div class="cost-num">< 2h</div>
+        <div class="cost-num">&lt; <span data-count="2" class="counter">0</span>h</div>
         <div class="cost-label">Temps moyen passé au téléphone<br>par semaine par commercial B2B</div>
       </div>
       <div class="cost-item">
-        <div class="cost-num">90%</div>
+        <div class="cost-num"><span data-count="90" class="counter">0</span>%</div>
         <div class="cost-label">Des formations commerciales<br>sans impact mesurable à J+30</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD — LA MÉTHODE SALESCRAFT -->
+<section class="method" id="methode">
+  <div class="container">
+    <div class="method-header reveal">
+      <div class="section-label">Notre méthode</div>
+      <h2>La Méthode SalesCraft™<br><span class="serif">4 piliers. Zéro théorie.</span></h2>
+      <p>On ne fait pas de la formation en salle. Notre méthode est conçue pour les équipes commerciales SaaS et tech en vente complexe. Chaque pilier s'appuie sur le précédent.</p>
+    </div>
+    <div class="method-steps">
+      <div class="method-step reveal">
+        <div class="method-step-num">1</div>
+        <h3>Cadre</h3>
+        <p>Audit des scripts, qualification de la liste, traitement des objections. On pose les fondations avant d'envoyer quiconque au front.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-step-num">2</div>
+        <h3>Cadence</h3>
+        <p>Des créneaux fixes, des objectifs clairs, un rythme qui tient dans la durée. Pas de motivation éphémère — de la discipline installée.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-step-num">3</div>
+        <h3>Coaching</h3>
+        <p>Je m'assois à côté de vos commerciaux et je corrige en temps réel. Le pitch, le ton, les objections — tout se travaille sur le terrain, pas en salle.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-step-num">4</div>
+        <h3>Culture</h3>
+        <p>Le Ninja Contest crée une dynamique collective. La prospection cesse d'être un effort solitaire pour devenir un sport d'équipe.</p>
+      </div>
+    </div>
+    <div class="method-tagline reveal">
+      <strong>Cadre → Cadence → Coaching → Culture.</strong> C'est comme ça qu'on transforme une équipe qui évite le téléphone en machine à pipeline.
     </div>
   </div>
 </section>
@@ -1074,23 +1089,61 @@ footer {
 <!-- ABOUT / COACH -->
 <section class="about" id="about">
   <div class="container">
-    <div class="about-grid reveal">
-      <div class="about-photo">
-        <div class="ph-icon">👤</div>
-        <p class="ph-text">Photo portrait d'Ali</p>
+    <div class="about-grid">
+      <div class="photo-placeholder about-photo reveal-left" id="photo-ali">
+        <div class="ph-camera">👤</div>
+        <p class="ph-label">Portrait professionnel d'Ali — confiant, direct, sourire authentique</p>
+        <span class="ph-nano">→ Nano Bananar #2</span>
       </div>
-      <div class="about-content">
+      <div class="about-content reveal-right">
         <div class="section-label">Votre coach</div>
         <h2>Ali Rahman</h2>
-        <p>15 ans d'expérience terrain en vente B2B. Ex-Head of Sales en startup SaaS. J'ai recruté, formé et dirigé des équipes commerciales de 4 à 20 personnes.</p>
+        <p>15 ans de vente B2B terrain. Ex-directeur commercial en startup SaaS. J'ai recruté, formé et dirigé des équipes de 4 à 20 commerciaux.</p>
         <p>Je ne fais pas de théorie. Je m'assois à côté de vos commerciaux et je les coach pendant qu'ils appellent. Les résultats arrivent le jour même — pas dans 6 mois.</p>
         <p>Ma conviction : le problème n'est jamais le manque d'outils. C'est le manque de cadence, de cadre et de coaching terrain.</p>
         <div class="about-credentials">
-          <div class="credential"><span class="icon">🏢</span> Ex-Head of Sales SaaS</div>
+          <div class="credential"><span class="icon">🏢</span> Ex-DirCo SaaS</div>
           <div class="credential"><span class="icon">📞</span> 15+ ans terrain B2B</div>
           <div class="credential"><span class="icon">👥</span> 50+ commerciaux coachés</div>
           <div class="credential"><span class="icon">🤝</span> Partenaire Lemlist</div>
+          <div class="credential"><span class="icon">🎯</span> Spécialiste vente complexe</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after">
+  <div class="container">
+    <div class="ba-header reveal">
+      <div class="section-label">La transformation</div>
+      <h2>Avant vs. Après<br><span class="serif">le Sprint Commando.</span></h2>
+      <p>Ce que vivent nos clients en 3 jours.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card before reveal-left">
+        <h3>😩 Avant</h3>
+        <ul class="ba-list">
+          <li><span class="ba-icon">✗</span> Moins de 2h/semaine au téléphone par commercial</li>
+          <li><span class="ba-icon">✗</span> Scripts génériques qui ne passent pas les 10 premières secondes</li>
+          <li><span class="ba-icon">✗</span> Réticence permanente à décrocher le téléphone</li>
+          <li><span class="ba-icon">✗</span> Pipeline stagnant, dépendance à l'inbound</li>
+          <li><span class="ba-icon">✗</span> Formations suivies → oubliées en 2 semaines</li>
+          <li><span class="ba-icon">✗</span> Prospection = corvée solitaire</li>
+        </ul>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-card after reveal-right">
+        <h3>🔥 Après</h3>
+        <ul class="ba-list">
+          <li><span class="ba-icon">✓</span> 65+ conversations en une seule journée de Ninja Contest</li>
+          <li><span class="ba-icon">✓</span> Scripts testés terrain, adaptés à votre ICP et votre marché</li>
+          <li><span class="ba-icon">✓</span> Commerciaux qui VEULENT appeler — émulation collective</li>
+          <li><span class="ba-icon">✓</span> Pipeline alimenté par de l'outbound discipliné</li>
+          <li><span class="ba-icon">✓</span> Méthode ancrée parce que pratiquée, pas théorisée</li>
+          <li><span class="ba-icon">✓</span> Prospection = sport d'équipe avec classement et fierté</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1104,7 +1157,6 @@ footer {
       <h2>Le Sprint Commando.<br><span class="serif">3 jours pour tout changer.</span></h2>
       <p>Pas de formation en salle. Je m'installe dans vos locaux et je coach votre équipe en live pendant qu'ils prospectent. Les résultats arrivent le jour même.</p>
     </div>
-
     <div class="pricing-card reveal">
       <div class="pricing-badge">Offre phare</div>
       <div class="pricing-top">
@@ -1112,7 +1164,7 @@ footer {
         <div class="pricing-tagline">3 jours · Sur site · Coaching terrain intégral</div>
         <div class="pricing-amount">3 500€</div>
         <div class="pricing-unit">HT · Tout inclus</div>
-        <div class="pricing-compare">≈ 1 166€/jour — moins qu'une semaine de salaire d'un SDR improductif</div>
+        <div class="pricing-compare">≈ 1 166€/jour — moins qu'une semaine de salaire d'un commercial improductif</div>
       </div>
       <div class="pricing-includes">
         <div class="pricing-item"><span class="check">✓</span> Audit complet des scripts d'appel</div>
@@ -1141,6 +1193,10 @@ footer {
     <div class="days">
       <div class="day-card reveal">
         <div class="day-sidebar">
+          <div class="day-photo-mini" id="photo-j1">
+            📋 Ali audite les scripts avec l'équipe
+            <br><span style="font-size:0.55rem;color:var(--coral);">Nano #3</span>
+          </div>
           <div><div class="day-num">J1</div><div class="day-label">Jour 1</div></div>
           <div class="day-subtitle">Préparation<br>& Calibrage</div>
         </div>
@@ -1159,6 +1215,10 @@ footer {
       </div>
       <div class="day-card ninja reveal">
         <div class="day-sidebar">
+          <div class="day-photo-mini" id="photo-j2">
+            🏆 Équipes en compétition, énergie et célébrations
+            <br><span style="font-size:0.55rem;color:var(--gold);">Nano #4</span>
+          </div>
           <div><div class="day-num">J2</div><div class="day-label">Jour 2</div></div>
           <div class="day-subtitle">Ninja Contest<br>& Exécution</div>
         </div>
@@ -1172,12 +1232,16 @@ footer {
             <div class="day-item"><span class="bullet">→</span> 12h30-13h — Débriefing mi-journée : classement, ajustements</div>
             <div class="day-item"><span class="bullet">→</span> 14h-16h30 — SESSION #2 : sprint final, derniers RDVs</div>
             <div class="day-item"><span class="bullet">→</span> 16h30-17h — Classement final + remise des récompenses</div>
-            <div class="day-item"><span class="bullet">→</span> 17h-17h30 — Débrief à chaud avec le manager</div>
+            <div class="day-item"><span class="bullet">→</span> 17h-17h30 — Débrief à chaud avec le directeur commercial</div>
           </div>
         </div>
       </div>
       <div class="day-card reveal">
         <div class="day-sidebar">
+          <div class="day-photo-mini" id="photo-j3">
+            📊 Ali présente les résultats au CEO en salle de réunion
+            <br><span style="font-size:0.55rem;color:var(--coral);">Nano #5</span>
+          </div>
           <div><div class="day-num">J3</div><div class="day-label">Jour 3</div></div>
           <div class="day-subtitle">Débriefing<br>& Blueprint</div>
         </div>
@@ -1202,7 +1266,7 @@ footer {
 <section class="ninja-section">
   <div class="container">
     <div class="ninja-grid">
-      <div class="ninja-content reveal">
+      <div class="ninja-content reveal-left">
         <div class="section-label" style="color:var(--gold);">Le Ninja Contest</div>
         <h2>La prospection<br>devient un <span class="gold">sport d'équipe.</span></h2>
         <p>Vos commerciaux évitent le téléphone parce que prospecter, c'est solitaire et ingrat. Le Ninja Contest change tout : compétition saine, énergie collective, résultats en temps réel.</p>
@@ -1225,7 +1289,12 @@ footer {
           </div>
         </div>
       </div>
-      <div class="reveal">
+      <div class="ninja-visual reveal-right">
+        <div class="photo-placeholder ninja-photo" id="photo-ninja">
+          <div class="ph-camera">🎉</div>
+          <p class="ph-label">Équipe startup qui célèbre, mains levées, énergie — style Welcome to the Jungle</p>
+          <span class="ph-nano">→ Nano Bananar #6</span>
+        </div>
         <div class="scoreboard">
           <div class="scoreboard-header">
             <span class="scoreboard-title">🏆 Ninja Contest — Classement</span>
@@ -1247,21 +1316,24 @@ footer {
             </div>
           </div>
         </div>
-        <p style="text-align:center;font-size:0.72rem;color:var(--text-muted);margin-top:0.6rem;">Simulation d'un tableau de scores type en Jour 2</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS — CAROUSEL -->
 <section class="testimonials" id="resultats">
   <div class="container">
     <div class="testimonials-header reveal">
       <div class="section-label">Résultats</div>
       <h2>Ce qu'ils en disent.</h2>
+      <p>Plus de 50 équipes accompagnées. Voici leurs retours.</p>
     </div>
-    <div class="testi-grid">
-      <div class="testi-card reveal">
+  </div>
+  <div class="testi-carousel-wrapper">
+    <div class="testi-carousel" id="testiCarousel">
+      <!-- Testimonial 1 -->
+      <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
         <p class="testi-quote">"En une journée, mon équipe a décroché plus de RDVs qu'en 3 semaines de prospection classique. Le format compétition a créé une énergie incroyable."</p>
         <div class="testi-metric">+65 conversations en 1 jour</div>
@@ -1270,23 +1342,102 @@ footer {
           <div><div class="testi-name">Thomas M.</div><div class="testi-role">CEO — SaaS B2B, 45 employés</div></div>
         </div>
       </div>
-      <div class="testi-card reveal">
+      <!-- Testimonial 2 -->
+      <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"On avait fait 2 formations avant. Aucun impact. Avec Ali, il était dans la tranchée avec nous. Mes commerciaux ont compris en 1 jour ce que 6 mois de formation n'avaient pas réussi à ancrer."</p>
+        <p class="testi-quote">"On avait fait 2 formations avant. Aucun impact. Avec Ali, il était dans la tranchée avec nous. Mes commerciaux ont compris en 1 jour ce que 6 mois de théorie n'avaient pas réussi."</p>
         <div class="testi-metric">3 deals signés en 30 jours</div>
         <div class="testi-author">
           <div class="testi-avatar">SL</div>
-          <div><div class="testi-name">Sophie L.</div><div class="testi-role">Head of Sales — Scale-up Tech, 120 employés</div></div>
+          <div><div class="testi-name">Sophie L.</div><div class="testi-role">Directrice commerciale — Scale-up Tech</div></div>
         </div>
       </div>
-      <div class="testi-card reveal">
+      <!-- Testimonial 3 -->
+      <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Le Ninja Contest a transformé la dynamique de l'équipe. Mes SDR qui détestaient prospecter se sont battus pour décrocher le plus de RDVs. L'ambiance était électrique."</p>
+        <p class="testi-quote">"Le Ninja Contest a transformé la dynamique de l'équipe. Mes commerciaux qui détestaient prospecter se sont battus pour décrocher le plus de RDVs. L'ambiance était électrique."</p>
         <div class="testi-metric">Pipeline +180% en 30 jours</div>
         <div class="testi-author">
           <div class="testi-avatar">MR</div>
           <div><div class="testi-name">Mehdi R.</div><div class="testi-role">CEO — SaaS RH, 30 employés</div></div>
         </div>
+      </div>
+      <!-- Placeholder 4 -->
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Placeholder — Témoignage réel à ajouter. Ali remplacera par un vrai retour client."</p>
+        <div class="testi-metric">Résultat à compléter</div>
+        <div class="testi-author">
+          <div class="testi-avatar">??</div>
+          <div><div class="testi-name">Prénom N.</div><div class="testi-role">Rôle — Entreprise</div></div>
+        </div>
+      </div>
+      <!-- Placeholder 5 -->
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Placeholder — Témoignage réel à ajouter."</p>
+        <div class="testi-metric">Résultat à compléter</div>
+        <div class="testi-author">
+          <div class="testi-avatar">??</div>
+          <div><div class="testi-name">Prénom N.</div><div class="testi-role">Rôle — Entreprise</div></div>
+        </div>
+      </div>
+      <!-- Placeholder 6 -->
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Placeholder — Témoignage réel à ajouter."</p>
+        <div class="testi-metric">Résultat à compléter</div>
+        <div class="testi-author">
+          <div class="testi-avatar">??</div>
+          <div><div class="testi-name">Prénom N.</div><div class="testi-role">Rôle — Entreprise</div></div>
+        </div>
+      </div>
+      <!-- Placeholder 7-15 will be added when Ali provides real testimonials -->
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="carouselPrev" aria-label="Précédent">←</button>
+      <button class="carousel-btn" id="carouselNext" aria-label="Suivant">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ROI CALCULATOR -->
+<section class="roi-calc">
+  <div class="container">
+    <div class="roi-header reveal">
+      <div class="section-label">Simulateur</div>
+      <h2>Calculez votre retour<br><span class="serif">sur investissement.</span></h2>
+      <p>Ajustez les curseurs pour voir l'impact du Sprint Commando sur votre pipeline.</p>
+    </div>
+    <div class="roi-card reveal">
+      <div class="roi-inputs">
+        <div class="roi-input-group">
+          <label>Nombre de commerciaux</label>
+          <input type="range" min="2" max="15" value="5" id="roiTeam">
+          <div class="roi-input-current" id="roiTeamVal">5</div>
+        </div>
+        <div class="roi-input-group">
+          <label>Deal moyen (€ HT)</label>
+          <input type="range" min="3000" max="50000" step="1000" value="12000" id="roiDeal">
+          <div class="roi-input-current" id="roiDealVal">12 000€</div>
+        </div>
+      </div>
+      <div class="roi-result">
+        <div class="roi-result-grid">
+          <div>
+            <div class="roi-metric-big" id="roiConversations">0</div>
+            <div class="roi-metric-label">Conversations en J2</div>
+          </div>
+          <div>
+            <div class="roi-metric-big" id="roiRDV">0</div>
+            <div class="roi-metric-label">RDVs qualifiés projetés</div>
+          </div>
+          <div>
+            <div class="roi-metric-big" id="roiRevenue">0€</div>
+            <div class="roi-metric-label">Pipeline potentiel à 30j</div>
+          </div>
+        </div>
+        <div class="roi-verdict">Investissement : 3 500€ → ROI potentiel : <strong id="roiMultiple">0x</strong></div>
       </div>
     </div>
   </div>
@@ -1311,12 +1462,12 @@ footer {
         </ul>
       </div>
       <div class="for-who-card reveal">
-        <h3>Vous êtes Head of Sales / DirCo</h3>
-        <div class="role">Équipe de SDR, BDR ou Account Executives</div>
+        <h3>Vous êtes Directeur Commercial / DirCo</h3>
+        <div class="role">Équipe de commerciaux terrain ou Account Executives</div>
         <ul class="for-who-list">
           <li>Vos KPIs de prospection stagnent malgré les outils en place</li>
-          <li>Vous passez plus de temps à manager qu'à coacher terrain</li>
-          <li>Le turnover de vos SDR est un problème récurrent</li>
+          <li>Vous manquez de temps pour coacher votre équipe au quotidien</li>
+          <li>Le turnover de vos commerciaux est un problème récurrent</li>
           <li>Vous voulez installer une cadence qui tient dans la durée</li>
         </ul>
       </div>
@@ -1324,7 +1475,7 @@ footer {
   </div>
 </section>
 
-<!-- RESOURCES -->
+<!-- RESOURCES CTA -->
 <section class="resources" id="ressources">
   <div class="container">
     <div class="resources-header reveal">
@@ -1333,24 +1484,27 @@ footer {
       <p>Des ressources terrain, actionnables, sans blabla. Pour commencer à améliorer votre prospection dès aujourd'hui.</p>
     </div>
     <div class="resources-grid">
-      <a href="#" class="resource-card reveal">
+      <a href="salescraft-resources.html" class="resource-card reveal">
         <div class="resource-icon">📋</div>
         <h3>Le Script Commando</h3>
         <p>Le script d'appel en 4 blocs qui marche pour 80% des SaaS B2B, + les 5 objections les plus fréquentes.</p>
         <div class="resource-tag">PDF · Téléchargement gratuit</div>
       </a>
-      <a href="#" class="resource-card reveal">
+      <a href="salescraft-resources.html" class="resource-card reveal">
         <div class="resource-icon">🔍</div>
         <h3>Audit Prospection</h3>
-        <p>10 questions pour évaluer votre cadence de prospection actuelle. Identifiez vos blocages en 5 minutes.</p>
+        <p>10 questions pour évaluer votre cadence actuelle. Identifiez vos blocages en 5 minutes.</p>
         <div class="resource-tag">Checklist · Gratuit</div>
       </a>
-      <a href="#" class="resource-card reveal">
+      <a href="salescraft-resources.html" class="resource-card reveal">
         <div class="resource-icon">🎯</div>
         <h3>Grille Traitement d'Objections</h3>
         <p>Les 10 objections les plus fréquentes en cold call B2B avec les réponses terrain testées.</p>
         <div class="resource-tag">PDF · Téléchargement gratuit</div>
       </a>
+    </div>
+    <div class="resources-more reveal">
+      <a href="salescraft-resources.html">Voir toutes les ressources →</a>
     </div>
   </div>
 </section>
@@ -1387,6 +1541,10 @@ footer {
         <div class="faq-q"><span>Que se passe-t-il après les 3 jours ?</span><div class="faq-toggle">+</div></div>
         <div class="faq-a">Vous repartez avec : scripts testés terrain, grille d'objections, plan d'action 30 jours, et un suivi à J+15 inclus. Si le potentiel est confirmé, on peut discuter du Sprint 90 (3 mois de coaching hebdomadaire).</div>
       </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>C'est quoi la Méthode SalesCraft™ ?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">C'est notre framework propriétaire en 4 piliers : Cadre (scripts et process), Cadence (rythme discipliné), Coaching (correction terrain en temps réel), Culture (dynamique d'équipe). Conçu spécifiquement pour les équipes commerciales SaaS B2B en vente complexe. Pas de théorie — 100% exécution.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1397,10 +1555,15 @@ footer {
     <div class="final-guarantee">✓ Diagnostic gratuit · 30 min · Sans engagement</div>
     <h2>Prêt à remettre vos commerciaux<br><span class="serif" style="color:var(--coral-light);">au téléphone ?</span></h2>
     <p>On regarde votre situation ensemble. Je vous dis franchement si le Sprint Commando peut vous aider — et si oui, on bloque les dates.</p>
-    <a href="https://calendly.com" class="btn-primary" style="font-size:1.05rem;padding:1.1rem 2.5rem;">Réserver mon diagnostic gratuit →</a>
+    <a href="https://calendly.com" class="btn-primary" style="font-size:1.05rem;padding:1.2rem 2.8rem;">Réserver mon diagnostic gratuit →</a>
     <p class="final-sub">Vous parlerez directement avec Ali, pas avec un commercial.<br>15 ans d'expérience terrain en vente B2B SaaS.</p>
   </div>
 </section>
+
+<!-- STICKY CTA MOBILE -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#booking" class="btn-primary" style="width:100%;justify-content:center;">Réserver un diagnostic gratuit →</a>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1410,6 +1573,7 @@ footer {
       <div class="footer-links">
         <a href="#">LinkedIn</a>
         <a href="mailto:ali@salescraft.fr">ali@salescraft.fr</a>
+        <a href="salescraft-resources.html">Ressources</a>
         <a href="#">Mentions légales</a>
       </div>
     </div>
@@ -1417,14 +1581,26 @@ footer {
 </footer>
 
 <script>
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
-  });
+// ═══════════════════════════════════════
+// NAV SCROLL EFFECT
+// ═══════════════════════════════════════
+const nav = document.getElementById('mainNav');
+const stickyCta = document.getElementById('stickyCta');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  nav.classList.toggle('scrolled', scrollY > 50);
+
+  // Sticky CTA appears after hero
+  if (stickyCta) {
+    stickyCta.classList.toggle('visible', scrollY > 600);
+  }
 });
 
+// ═══════════════════════════════════════
+// SMOOTH SCROLL
+// ═══════════════════════════════════════
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
@@ -1433,21 +1609,147 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-const observer = new IntersectionObserver(entries => {
+// ═══════════════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════════════
+const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
 
-document.querySelectorAll('.problem-grid .reveal, .testi-grid .reveal, .days .reveal, .for-who-grid .reveal, .resources-grid .reveal').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 0.08}s`;
+// Stagger children
+document.querySelectorAll('.problem-grid .reveal, .testi-card, .days .reveal, .for-who-grid .reveal, .resources-grid .reveal, .method-steps .reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.1}s`;
 });
 
-// Marquee: duplicate logos for seamless infinite scroll
+// ═══════════════════════════════════════
+// ANIMATED COUNTERS
+// ═══════════════════════════════════════
+function animateCounter(el, target, duration = 2000) {
+  const isFloat = target < 10;
+  const start = performance.now();
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    const current = Math.round(eased * target);
+
+    if (target >= 1000) {
+      el.textContent = current.toLocaleString('fr-FR');
+    } else {
+      el.textContent = current;
+    }
+
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Float badge counters
+const floatCounterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.animated) {
+      e.target.dataset.animated = 'true';
+      const target = parseInt(e.target.dataset.count);
+      animateCounter(e.target, target, 1500);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => floatCounterObserver.observe(el));
+
+// Cost section counters
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.animated) {
+      e.target.dataset.animated = 'true';
+      const target = parseInt(e.target.dataset.count);
+      animateCounter(e.target, target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// ═══════════════════════════════════════
+// MARQUEE DUPLICATION
+// ═══════════════════════════════════════
 const track = document.getElementById('marqueeTrack');
 if (track) {
   const logos = track.innerHTML;
-  track.innerHTML = logos + logos; // duplicate for seamless loop
+  track.innerHTML = logos + logos;
+}
+
+// ═══════════════════════════════════════
+// TESTIMONIAL CAROUSEL
+// ═══════════════════════════════════════
+const carousel = document.getElementById('testiCarousel');
+const prevBtn = document.getElementById('carouselPrev');
+const nextBtn = document.getElementById('carouselNext');
+
+if (carousel && prevBtn && nextBtn) {
+  const scrollAmount = 360;
+  prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+  nextBtn.addEventListener('click', () => carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+}
+
+// ═══════════════════════════════════════
+// ROI CALCULATOR
+// ═══════════════════════════════════════
+const roiTeam = document.getElementById('roiTeam');
+const roiDeal = document.getElementById('roiDeal');
+
+function updateROI() {
+  const team = parseInt(roiTeam.value);
+  const deal = parseInt(roiDeal.value);
+
+  document.getElementById('roiTeamVal').textContent = team;
+  document.getElementById('roiDealVal').textContent = deal.toLocaleString('fr-FR') + '€';
+
+  // Formulas based on real data
+  const conversations = team * 13; // ~13 conversations per person per day
+  const rdvs = Math.round(conversations * 0.14); // 14% conversion
+  const pipeline = rdvs * deal;
+  const multiple = Math.round(pipeline / 3500);
+
+  document.getElementById('roiConversations').textContent = conversations;
+  document.getElementById('roiRDV').textContent = rdvs;
+  document.getElementById('roiRevenue').textContent = pipeline.toLocaleString('fr-FR') + '€';
+  document.getElementById('roiMultiple').textContent = multiple + 'x';
+}
+
+if (roiTeam && roiDeal) {
+  roiTeam.addEventListener('input', updateROI);
+  roiDeal.addEventListener('input', updateROI);
+  updateROI();
+}
+
+// ═══════════════════════════════════════
+// FAQ ACCORDION
+// ═══════════════════════════════════════
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// ═══════════════════════════════════════
+// PARALLAX ON MOUSE MOVE (desktop only)
+// ═══════════════════════════════════════
+if (window.matchMedia('(min-width: 900px)').matches) {
+  document.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 2;
+    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const speed = parseFloat(el.dataset.parallax);
+      el.style.transform = `translate(${x * speed * 100}px, ${y * speed * 100}px)`;
+    });
+  });
 }
 </script>
 
